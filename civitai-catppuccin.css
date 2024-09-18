@@ -98,7 +98,7 @@
         .mantine-xwinet[data-hovered] {background-color: @surface0;}
         
         /*header*/
-        .mantine-27jxzw, .mantine-1ngrqgn {
+        .mantine-27jxzw, .mantine-1ngrqgn, .mantine-g6smkf{
             color: @text;
             background-color: @mantle;
         }
@@ -124,6 +124,7 @@
         .mantine-Accordion-content, .mantine-16hreen, .mantine-gm7otb,  {color:@text; background-color: @base;}
         .mantine-1e4alpk {background-color: @base;}
         .mantine-SegmentedControl-root {background-color: @mantle;}
+        .mantine-Slider-bar, .mantine-Slider-thumb  {background-color:@accent-color;}
         
         /*image view is just as cringe*/
         
@@ -136,7 +137,7 @@
         
         
         /*accent stuff*/
-        input:checked + * > div[class^="mantine-"] { background-color:@accent-color;}
+        /*input:checked + * > div[class^="mantine-"] { background-color:@accent-color;}*/
         .mantine-Switch-track {background-color:@accent-color !important; border: @accent-color;}
         .mantine-Switch-thumb {background-color:#ffffff !important;}
         
@@ -148,13 +149,14 @@
         .mantine-Checkbox-input:checked {border:@accent-color; background-color: @accent-color;}
         
         /*these are almost all buttons i think so figuring out the transparency thing sooner than later would be better lol*/
-        .mantine-pozo7u, .mantine-vot1ix, .mantine-14hm07m, .mantine-lblw0z, .mantine-x9ubgi, .mantine-dsuvhx, .mantine-ovijrs, .mantine-1ke99cu, .mantine-mp35ka, .mantine-j5xtyu, .mantine-Indicator-indicator {background-color:@accent-color;}
+        .mantine-5sn74b, .mantine-1ugc3ff, .mantine-pozo7u, .mantine-vot1ix, .mantine-14hm07m, .mantine-lblw0z, .mantine-x9ubgi, .mantine-dsuvhx, .mantine-ovijrs, .mantine-1ke99cu, .mantine-mp35ka, .mantine-j5xtyu, .mantine-Indicator-indicator {background-color:@accent-color;}
         .mantine-1hwruzx, .__mantine-ref-ai {fill: @accent-color;}
         .mantine-3rhhm4 {border: 1px solid @accent-color;}
         .mantine-Chip-label[data-checked][data-variant="filled"] {border: 1px solid @accent-color;}
         
         /*buttons on profile, usually round + the no items icon background*/
         .mantine-fda66h, .mantine-1278ijn, .mantine-hf8nu6, .mantine-o10yv0, .mantine-1qrtfp6 {background-color:@accent-color;}
+        
         
         
     }
