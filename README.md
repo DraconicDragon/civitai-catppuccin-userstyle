@@ -1,3 +1,4 @@
 # civitai-catppuccin-userstyle
-Catppuccin theme for civitai.com supports only dark mode atm and may break at any moment, made primarily for personal use
+Catppuccin theme for civitai.com supports only dark mode atm and is adjusted for mocha theme and may break at any moment because of the hardcoded css classes, made primarily for personal use and not every element is themed, but most are
 made for use with stylus extension
+![Mocha Mauve Preview Image](./firefox_jWFSdU8k7t.jpg)
