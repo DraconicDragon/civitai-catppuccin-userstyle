@@ -78,7 +78,8 @@
         /*things, especially details panel and popup*/
         .mantine-l3g33k, .mantine-Paper-root, .mantine-kimpif, .mantine-Popover-dropdown, .mantine-fg7oqf, .mantine-Menu-dropdown {color: @text; background-color: @base;}
         .mantine-Accordion-control, .mantine-Card-cardSection, .mantine-1i2qjzw, .mantine-nrh6zc[data-striped] tbody tr:nth-of-type(2n+1) {color: @text; background-color: @mantle;}
-        .mantine-1exo8hb:hover {background-color:@surface0;}
+        .mantine-1exo8hb:hover, .mantine-1exo8hb[data-unread="true"] {background-color:@surface0;}
+        .mantine-1exo8hb[data-unread="true"]:hover {background-color:@surface2;}
         
         /*buzz in account popup*/
         .mantine-xyvtd6 {background-color:@surface0;}
