@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.0
+@version      0.5.1
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -13,13 +13,22 @@
 @var select lightFlavor "Light Flavor" ["latte:Latte*", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha"]
 @var select darkFlavor "Dark Flavor" ["latte:Latte", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha*"]
 @var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+@var select removeVaultIcon "Vault Icon Removal" ["removeIcon:Remove", "stay:Stay"]
 ==/UserStyle== */
-@-moz-document regexp("https://civitai\\.(com|green|black|red)/.*") {
+@-moz-document regexp("https://civitai\.(com|green|black|red)/.*|https://app\.gpt-trainer\.com/.*") {
     :root {
         #catppuccin(@darkFlavor, @accentColor, @accentColor);
-        
+        #remove-vault-icon(@removeVaultIcon);
     }
 //TODO: add hover and maybe pressed highlight, info stuff missing + image view probably and some less used views, see if can change brush svg to white and color it from parent
+//TODO: the generator is missing, lol, maybe training site too, comments cancel + comment button no coloralign-content, model page details table missing
+//NOTE: technically chat is also not finished but i dont use it so i dont care and it looks good enough if you dont hover lol
+    
+    //TODOOOOOOOOOOOOOOOO: NOTIFICATION:::::::::::::::!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    #remove-vault-icon(@choice){
+        
+    }
+    
     #catppuccin(@lookup, @accent, @t_accent) {
         @rosewater: @catppuccin[@@lookup][@rosewater];
         @flamingo: @catppuccin[@@lookup][@flamingo];
@@ -121,6 +130,8 @@
         }
         
         
+        
+        
         /*all general buttons, excluding idk, idk, model create like etc, delete post, delete account, logout, profile card btns, image carousel, gallery, top bar "more" btn, comment cards, comment threads*/
         .mantine-Button-root:not(.mantine-vs5cem *, .mantine-1omorxi *, .mantine-1dvev8p *, .mantine-1h21rfn, .mantine-1k6yyir, .mantine-27jxzw, .mantine-1gg8vod *, .mantine-1ejqi9m *, .mantine-15xhaye *, [id^="mantine-r"][id$="-target"], div[role="gridcell"] .mantine-Card-root *, [id^="mantine-r"][id$="-body"] * ) {
             background-color: @t_accent-color;
@@ -173,6 +184,7 @@
             color: @b_accent-color;
         }
         .mantine-1hwruzx {fill: @accent-color;}
+        .__mantine-ref-ivit, .__mantine-ref-c {fill:@text}
         
         /*customize profile btn */
         .mantine-1278ijn {background-color: @accent-color !important; color:white !important}
@@ -270,7 +282,24 @@
         .sticky .mantine-Group-root {color:@text}
         //TODO highlight select/hover
         
-       
+        
+        //Notifications
+        .mantine-Drawer-drawer [id^="mantine-"][id$="-body"] .mantine-Stack-root .mantine-ScrollArea-root .mantine-ScrollArea-viewport .mantine-SimpleGrid-root .mantine-Paper-root {
+            background-color: @mantle
+        }
+        .mantine-Drawer-drawer [id^="mantine-"][id$="-body"] .mantine-Stack-root .mantine-ScrollArea-root .mantine-ScrollArea-viewport .mantine-SimpleGrid-root .mantine-Paper-root:hover {
+            background-color: @surface0
+        }
+        .mantine-Drawer-drawer [id^="mantine-"][id$="-body"] .mantine-Stack-root .mantine-ScrollArea-root .mantine-ScrollArea-viewport .mantine-SimpleGrid-root .mantine-Paper-root[data-unread="true"] {
+            background-color: @surface1
+        }
+        
+        //civbot
+        //#chat-container  {background-color: @crust !important; color:@text}
+        #chat-container .items-start .flex-1 .rounded-lg  {background-color: @surface0 !important; color:@text !important}
+        #chat-container .transition-colors  {background-color: @accent-color !important; color:#fff !important}
+        
+        
     }
 }
 @catppuccin: {
