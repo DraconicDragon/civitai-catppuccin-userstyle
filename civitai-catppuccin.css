@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.4
+@version      0.5.5
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -127,7 +127,7 @@
         
         
         /*all general buttons, excluding idk, idk, model create like etc, delete post, delete account, logout, profile card btns, image carousel, gallery, top bar "more" btn, comment cards, comment threads*/
-        .mantine-Button-root:not(.mantine-vs5cem *, .mantine-1omorxi *, .mantine-1dvev8p *, .mantine-1h21rfn, .mantine-1k6yyir, .mantine-27jxzw, .mantine-1gg8vod *, .mantine-1ejqi9m *, .mantine-15xhaye *, [id^="mantine-r"][id$="-target"], div[role="gridcell"] .mantine-Card-root *, [id^="mantine-r"][id$="-body"] * ) {
+        .mantine-Button-root:not(.mantine-vs5cem *, .mantine-1omorxi *, .mantine-1dvev8p *, .mantine-1h21rfn, .mantine-1k6yyir, .mantine-27jxzw, .mantine-1gg8vod *, .mantine-1ejqi9m *, .mantine-15xhaye *, [id^="mantine-"][id$="-target"], div[role="gridcell"] .mantine-Card-root *, [id^="mantine-r"][id$="-body"] * ) {
             background-color: @t_accent-color;
             color:@b_accent-color;
         }
@@ -277,8 +277,13 @@
         // header sticky thing
         .sticky {background-color: @base; color:@text}
         .sticky .mantine-Group-root {color:@text}
-        //TODO highlight select/hover
-        
+        .sticky .mantine-SegmentedControl-root .mantine-SegmentedControl-control:not(.mantine-SegmentedControl-controlActive) label a .mantine-Text-root {color:@subtext0;}
+        .sticky .mantine-SegmentedControl-root .mantine-SegmentedControl-control:not(.mantine-SegmentedControl-controlActive):hover label a .mantine-Text-root {color:@subtext1;}
+        .sticky .mantine-SegmentedControl-root .mantine-SegmentedControl-controlActive label a .mantine-Text-root {color:@text;}
+        .sticky .mantine-SegmentedControl-root .mantine-SegmentedControl-controlActive {background-color: @surface0;}
+        // sticky header on homepage specific
+        [id^="mantine-"][id*="-tab-"][data-active="true"], [id^="mantine-"][id$="-target"][data-active="true"] {background-color: @surface0}
+        [id^="mantine-"][id*="-tab-"]:not([data-active="true"]):hover, [id^="mantine-"][id$="-target"][data-active="true"]:hover {background-color: fade(@surface0, 65) !important}
         
         //Notifications
         .mantine-Drawer-drawer [id^="mantine-"][id$="-body"] .mantine-Paper-root .mantine-SimpleGrid-root .mantine-Paper-root {
