@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.5
+@version      0.5.7
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -127,7 +127,7 @@
         
         
         /*all general buttons, excluding idk, idk, model create like etc, delete post, delete account, logout, profile card btns, image carousel, gallery, top bar "more" btn, comment cards, comment threads*/
-        .mantine-Button-root:not(.mantine-vs5cem *, .mantine-1omorxi *, .mantine-1dvev8p *, .mantine-1h21rfn, .mantine-1k6yyir, .mantine-27jxzw, .mantine-1gg8vod *, .mantine-1ejqi9m *, .mantine-15xhaye *, [id^="mantine-"][id$="-target"], div[role="gridcell"] .mantine-Card-root *, [id^="mantine-r"][id$="-body"] * ) {
+        .mantine-Button-root:not(.mantine-vs5cem *, .mantine-1omorxi *, .mantine-1dvev8p *, .mantine-1h21rfn, .mantine-1k6yyir, .mantine-27jxzw, .mantine-1gg8vod *, .mantine-1ejqi9m *, [id="gallery"] *, [id^="mantine-"][id$="-target"], div[role="gridcell"] .mantine-Card-root *, [id^="mantine-r"][id$="-body"] * ) {
             background-color: @t_accent-color;
             color:@b_accent-color;
         }
@@ -142,17 +142,27 @@
         
         /*buttons with border: Add API key, Redeem Code, add comment/post/review, suggested res., */
         .mantine-1evx5be, .mantine-wpxh0o, .mantine-3rhhm4, .mantine-s0od4i {border-color: @accent-color;}
+        //gallery add post, add review 
+        [id="gallery"] .mantine-Group-root .mantine-Group-root .mantine-Button-root:not([data-expanded], [aria-expanded])  {color:@b_accent-color; 
+            .tabler-icon-star {stroke: @b_accent-color; fill: @b_accent-color};
+        } // use this scss style for similar things
+        //sort + filter maybe global
+        //.mantine-Button-root[data-expanded], .mantine-Button-root[aria-expanded]:not(header *) {background-color: green;
+        //    .sticky {background-color: transparent;}
+        //}
         
         /*download button in file dropdown on model page*/
-        [id^="mantine-"][id$="panel-version-files"] .mantine-Group-root .mantine-Button-root {background-color: transparent !important;} 
-        [id^="mantine-"][id$="panel-version-files"] .mantine-Group-root .mantine-Button-root:hover {background-color: @t_accent-color !important;}
+        [id^="mantine-"][id$="panel-version-files"] .mantine-Group-root .mantine-Button-root {background-color: transparent !important;
+            &:hover {background-color: @t_accent-color !important;}
+        } 
         
         /*profile cards buttons*/
         .mantine-j5xtyu {background-color: @accent-color;}
         
         /*comment cards*/
-        div[role="gridcell"] .mantine-Card-root .mantine-Button-root:not([id^="mantine-"][id$="-target"]) {color:@b_accent-color}
-        div[role="gridcell"] .mantine-Card-root .mantine-Button-root:not([id^="mantine-"][id$="-target"]):hover {color:@b_accent-color; background-color:@t_accent-color;}
+        div[role="gridcell"] .mantine-Card-root .mantine-Button-root:not([id^="mantine-"][id$="-target"]) {color:@b_accent-color; 
+            &:hover {color:@b_accent-color; background-color:@t_accent-color;}
+        }
         
         // comment threads, added my own border lol
         .mantine-Paper-root:has([id^="mantine-"][id$="-body"]) {background-color:@mantle !important; border:1px solid; border-color:@surface0}
@@ -198,7 +208,7 @@
         /*badges, exluding images/cards/carousel, shop buzz price, shop new, model page table stats, training, trigger words, hash, counters top + tags badges, */
         .mantine-Badge-root:not(.mantine-Card-root *, .mantine-1ejqi9m *, .cursor-pointer, .mantine-s4xvym, .mantine-4gptay, .mantine-rygrzn, .mantine-1u5ck20 *, .mantine-k4unwa *, .mantine-mwqi5l *) {
             background-color: @t_accent-color; color:@b_accent-color;
-        }
+        } // some not needed anymore i think
         
         /*model page tags main category tag, recommended resources*/
         .mantine-eqo531 {background-color: @t_accent-color; color: @b_accent-color;}
@@ -228,11 +238,17 @@
         [id^="headlessui-popover-panel-\:"] .leading-snug  {color: @b_accent-color !important;}
         .cursor-pointer {color:@accent-color !important;}
         
-        
-        
+        // image carousel buttons controls + gallery bottom bar indicator
+        .mantine-Carousel-controls .mantine-Carousel-control {background-color: @surface0; border-color:@surface1; color:@text}
+        [id="gallery"] .mantine-Carousel-indicators .mantine-Carousel-indicator  {background-color: @mantle !important}
+
         
         
         // scaffold styling
+        //gallery
+        [id="gallery"] > * {background-color: @base}
+        [id="gallery"] .mantine-Card-root .mantine-Paper-root {background-color: @mantle !important}
+        
         //divider
         .mantine-Divider-root {border-color:@surface0;} 
         
