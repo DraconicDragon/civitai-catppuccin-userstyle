@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.2
+@version      0.5.4
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -143,6 +143,9 @@
         /*buttons with border: Add API key, Redeem Code, add comment/post/review, suggested res., */
         .mantine-1evx5be, .mantine-wpxh0o, .mantine-3rhhm4, .mantine-s0od4i {border-color: @accent-color;}
         
+        /*download button in file dropdown on model page*/
+        [id^="mantine-"][id$="panel-version-files"] .mantine-Group-root .mantine-Button-root {background-color: transparent !important;} 
+        [id^="mantine-"][id$="panel-version-files"] .mantine-Group-root .mantine-Button-root:hover {background-color: @t_accent-color !important;}
         
         /*profile cards buttons*/
         .mantine-j5xtyu {background-color: @accent-color;}
@@ -219,11 +222,11 @@
 
         //NOTE: try to keep this style if possible so css doesnt break on class updates
         /*i icon generation metadata*/
-        
-        [id^="headlessui-popover-panel-\:"] .mantine-Text-root {color:@text !important}
+        [id^="headlessui-popover-panel-\:"] .mantine-Text-root:not(.text-lg, .cursor-pointer) {color:@subtext0;}
+        [id^="headlessui-popover-panel-\:"] .font-semibold {color:@text !important;}
         [id^="headlessui-popover-panel-\:"] .mantine-Badge-root {background-color:@t_accent-color; color: @b_accent-color !important;}
         [id^="headlessui-popover-panel-\:"] .leading-snug  {color: @b_accent-color !important;}
-        .cursor-pointer {color:@accent-color !important}
+        .cursor-pointer {color:@accent-color !important;}
         
         
         
