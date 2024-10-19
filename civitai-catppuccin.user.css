@@ -2,8 +2,8 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.7
-@updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.css
+@version      0.5.10
+@updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
 @author       Drac
@@ -323,6 +323,9 @@
         .mantine-z4z0r6 {visibility: collapse;}
         .mantine-1dutd10:nth-child(2) {margin-right:-10px;} // vault icon
         .mantine-1dutd10 [class=""]:has([aria-haspopup="dialog"]), .mantine-132yea6 {display:none !important;}
+        
+        
+        
     }
 }
 @catppuccin: {
