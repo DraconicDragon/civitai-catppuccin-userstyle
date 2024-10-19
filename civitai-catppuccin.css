@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.1
+@version      0.5.2
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -18,16 +18,10 @@
 @-moz-document regexp("https://civitai\.(com|green|black|red)/.*|https://app\.gpt-trainer\.com/.*") {
     :root {
         #catppuccin(@darkFlavor, @accentColor, @accentColor);
-        #remove-vault-icon(@removeVaultIcon);
     }
 //TODO: add hover and maybe pressed highlight, info stuff missing + image view probably and some less used views, see if can change brush svg to white and color it from parent
 //TODO: the generator is missing, lol, maybe training site too, comments cancel + comment button no coloralign-content, model page details table missing
 //NOTE: technically chat is also not finished but i dont use it so i dont care and it looks good enough if you dont hover lol
-    
-    //TODOOOOOOOOOOOOOOOO: NOTIFICATION:::::::::::::::!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    #remove-vault-icon(@choice){
-        
-    }
     
     #catppuccin(@lookup, @accent, @t_accent) {
         @rosewater: @catppuccin[@@lookup][@rosewater];
@@ -284,13 +278,13 @@
         
         
         //Notifications
-        .mantine-Drawer-drawer [id^="mantine-"][id$="-body"] .mantine-Stack-root .mantine-ScrollArea-root .mantine-ScrollArea-viewport .mantine-SimpleGrid-root .mantine-Paper-root {
+        .mantine-Drawer-drawer [id^="mantine-"][id$="-body"] .mantine-Paper-root .mantine-SimpleGrid-root .mantine-Paper-root {
             background-color: @mantle
         }
-        .mantine-Drawer-drawer [id^="mantine-"][id$="-body"] .mantine-Stack-root .mantine-ScrollArea-root .mantine-ScrollArea-viewport .mantine-SimpleGrid-root .mantine-Paper-root:hover {
-            background-color: @surface0
+        .mantine-Drawer-drawer [id^="mantine-"][id$="-body"] .mantine-Paper-root .mantine-SimpleGrid-root .mantine-Paper-root:hover {
+            background-color: @surface0 !important
         }
-        .mantine-Drawer-drawer [id^="mantine-"][id$="-body"] .mantine-Stack-root .mantine-ScrollArea-root .mantine-ScrollArea-viewport .mantine-SimpleGrid-root .mantine-Paper-root[data-unread="true"] {
+        .mantine-Drawer-drawer [id^="mantine-"][id$="-body"] .mantine-Paper-root .mantine-SimpleGrid-root .mantine-Paper-root[data-unread="true"] {
             background-color: @surface1
         }
         
@@ -300,6 +294,11 @@
         #chat-container .transition-colors  {background-color: @accent-color !important; color:#fff !important}
         
         
+        
+        //hardcoded things i want to have removed i guess
+        .mantine-z4z0r6 {visibility: collapse;}
+        .mantine-1dutd10:nth-child(2) {margin-right:-10px;} // vault icon
+        .mantine-1dutd10 [class=""]:has([aria-haspopup="dialog"]), .mantine-132yea6 {display:none !important;}
     }
 }
 @catppuccin: {
