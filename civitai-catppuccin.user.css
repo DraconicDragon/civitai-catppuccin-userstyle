@@ -333,9 +333,9 @@
         [id="__next"] .dark .z-10 .size-full .bg-gray-0 *:not(.mantine-UnstyledButton-root, .mantine-Switch-thumb) {border-color:@surface0; } // borders
         [id="__next"] .dark .z-10 .size-full .bg-gray-0 .gap-2 .mantine-SegmentedControl-root {background-color:@crust;} // top tab selection
         [id="__next"] .dark .z-10 .size-full .bg-gray-0 .scroll-area [id^="mantine-r"]:not(.mantine-Alert-root, .mantine-Alert-root *) {background-color:@base; }
-        [id="__next"] .dark .z-10 .size-full .bg-gray-0 .scroll-area .mantine-Card-root {background-color:@base !important; padding-bottom: 0px !important;} //fixes model selection to not be 12 pix over or so
         [id="__next"] .dark .z-10 .size-full .bg-gray-0 .mantine-SegmentedControl-active  {background-color:@surface0; }
         .mantine-p7lxco:hover {background-color: @accent-color} // resize bar
+        [id="__next"] .dark .z-10 .size-full .bg-gray-0 .scroll-area [id^="mantine-r"] .mantine-Badge-root {background-color: @t_accent-color; color: @b_accent-color;}
         
         //civbot
         //#chat-container  {background-color: @crust !important; color:@text}
