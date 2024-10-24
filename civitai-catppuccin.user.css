@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.13
+@version      0.5.14
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -20,7 +20,7 @@
         #catppuccin(@darkFlavor, @accentColor, @accentColor);
     }
 //TODO: add hover and maybe pressed highlight, info stuff missing + image view probably and some less used views, see if can change brush svg to white and color it from parent
-//TODO: the generator is missing, lol, maybe training site too, comments cancel + comment button no coloralign-content, model page details table missing
+//TODO: training site maybe missing, comments cancel + comment button no coloralign-content, model page details table missing
 //NOTE: technically chat is also not finished but i dont use it so i dont care and it looks good enough if you dont hover lol
     
     #catppuccin(@lookup, @accent, @t_accent) {
