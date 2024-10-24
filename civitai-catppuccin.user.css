@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.10
+@version      0.5.13
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -174,6 +174,7 @@
         .tabler-icon-bell-filled {fill:@b_accent-color;}
         .tabler-icon-brush {stroke:@b_accent-color;}
         .tabler-icon-alert-circle, .mantine-1p58evf {background-color: @accent-color;}
+        //.tabler-icon-refresh {background-color: @accent-color; stroke:@b_accent-color; fill:@b_accent-color;}
         
         /*reaction btn active*/
         .mantine-1rk94m8 {background-color: @t_accent-color; color: @b_text;}
@@ -222,11 +223,6 @@
         /*hyperlinks, excluding profile view segmented control/categories bar, buzz dash buzz b board, manage files, about V. show more*/
         .mantine-1qns6v4, .mantine-fgipfw, [id^="mantine-"][id$="-control-version-files"] .mantine-Anchor-root *,[id^="mantine-"][id$="-panel-version-description"]:nth-child(2) .mantine-Text-root {color:@accent-color !important}
         
-        /*switch button + checkbox*/
-        input:checked ~ .mantine-Switch-track  {background-color:@accent-color !important; border: @accent-color;}
-        input:checked + * > .mantine-Switch-thumb {background-color:#ffffff !important;}
-        .mantine-Checkbox-input:checked {background-color:@accent-color !important; border: @accent-color;}
-        
         /*remix btn*/
         .__mantine-ref-white * {background-color: @surface0; color: @b_accent-color;}
 
@@ -242,6 +238,25 @@
         .mantine-Carousel-controls .mantine-Carousel-control {background-color: @surface0; border-color:@surface1; color:@text}
         [id="gallery"] .mantine-Carousel-indicators .mantine-Carousel-indicator  {background-color: @mantle !important}
 
+        /*switch button + checkbox*/
+        .mantine-Switch-track {background-color: @base;}
+        input:checked ~ .mantine-Switch-track  {background-color:@accent-color !important; border: @accent-color;}
+        input:checked + * > .mantine-Switch-thumb {background-color:#ffffff !important;}
+        .mantine-Checkbox-input:checked {background-color:@accent-color !important; border: @accent-color;}
+        
+        // sliders
+        .mantine-Slider-track {background-color: green !important;}
+        .mantine-Slider-bar, .mantine-Slider-thumb {background-color:@accent-color; border-color:white !important;}
+        .mantine-Slider-thumb {border-width: 4px; height:16px; width: 16px}
+        
+        // add model modal in generator
+        .mantine-Modal-modal [id^="mantine-"][id$="-body"] .mantine-Button-root:not(.mantine-ScrollArea-root *) {background-color: @accent-color;}
+        .mantine-Modal-modal [id^="mantine-"][id$="-body"] .mantine-TextInput-wrapper * {background-color:@base; border-width: 0px; border-radius:4px; color:@text;}
+        .mantine-Modal-modal [id^="mantine-"][id$="-body"] .mantine-TextInput-wrapper {background-color:@base; border-width: 1px; border-radius:4px; border-color:@surface0;}
+        
+        
+        
+        
         
         
         // scaffold styling
@@ -312,18 +327,30 @@
             background-color: @surface1
         }
         
+        
+        //generator
+        [id="__next"] .dark .z-10 .size-full .bg-gray-0 {background-color:@mantle; } // main 
+        [id="__next"] .dark .z-10 .size-full .bg-gray-0 *:not(.mantine-UnstyledButton-root, .mantine-Switch-thumb) {border-color:@surface0; } // borders
+        [id="__next"] .dark .z-10 .size-full .bg-gray-0 .gap-2 .mantine-SegmentedControl-root {background-color:@crust;} // top tab selection
+        [id="__next"] .dark .z-10 .size-full .bg-gray-0 .scroll-area [id^="mantine-r"]:not(.mantine-Alert-root, .mantine-Alert-root *) {background-color:@base; }
+        [id="__next"] .dark .z-10 .size-full .bg-gray-0 .scroll-area .mantine-Card-root {background-color:@base !important; padding-bottom: 0px !important;} //fixes model selection to not be 12 pix over or so
+        [id="__next"] .dark .z-10 .size-full .bg-gray-0 .mantine-SegmentedControl-active  {background-color:@surface0; }
+        .mantine-p7lxco:hover {background-color: @accent-color} // resize bar
+        
         //civbot
         //#chat-container  {background-color: @crust !important; color:@text}
         #chat-container .items-start .flex-1 .rounded-lg  {background-color: @surface0 !important; color:@text !important}
         #chat-container .transition-colors  {background-color: @accent-color !important; color:#fff !important}
+        .disclaimer-container button {background-color: @accent-color !important}
         
         
+        //firefox scrollbar
+        scrollbar-color: @surface2 fade(@surface0,40);
         
         //hardcoded things i want to have removed i guess
         .mantine-z4z0r6 {visibility: collapse;}
         .mantine-1dutd10:nth-child(2) {margin-right:-10px;} // vault icon
         .mantine-1dutd10 [class=""]:has([aria-haspopup="dialog"]), .mantine-132yea6 {display:none !important;}
-        
         
         
     }
