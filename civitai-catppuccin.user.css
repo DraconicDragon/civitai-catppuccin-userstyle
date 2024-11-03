@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.15
+@version      0.5.16
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -236,7 +236,7 @@
         
         // image carousel buttons controls + gallery bottom bar indicator
         .mantine-Carousel-controls .mantine-Carousel-control {background-color: @surface0; border-color:@surface1; color:@text}
-        [id="gallery"] .mantine-Carousel-indicators .mantine-Carousel-indicator  {background-color: @mantle !important}
+        [id="gallery"] .mantine-Carousel-indicators .mantine-Carousel-indicator  {background-color: @subtext0 !important;}
 
         /*switch button + checkbox*/
         .mantine-Switch-track {background-color: @base;}
