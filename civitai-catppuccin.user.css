@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.22
+@version      0.5.23
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -17,7 +17,10 @@
 ==/UserStyle== */
 @-moz-document regexp("https://civitai\.(com|green|black|red)/.*|https://app\.gpt-trainer\.com/.*") {
     :root {
+
         #catppuccin(@darkFlavor, @accentColor, @accentColor);
+       
+         
     }
 //TODO: add hover and maybe pressed highlight, info stuff missing + image view probably and some less used views, see if can change brush svg to white and color it from parent
 //TODO: training site maybe missing, comments cancel + comment button no color
@@ -108,7 +111,8 @@
         @b_crust: lighten(@catppuccin[@@lookup][@crust], 20%);
         @b_accent-color: lighten(@catppuccin[@@lookup][@@accent], 20%);
 
-
+                --mantine-color-blue-4: #ffffff !important;
+        --mantine-color-blue-7: #ff6347 !important;
         
         color-scheme: if(@lookup =mocha, dark, light);
 
@@ -119,6 +123,7 @@
         color: @text;
 
         body {
+            
             color: @text;
             background-color: @mantle;
         }
@@ -359,7 +364,7 @@
         //#chat-container {background-color: @mantle !important; color:@text} // chat window
         ////////#root div[class="items-center"] {background-color:green !important;}
         
-        .mb-1 * {width: 420px; height: 666px} // popup window size
+        //.mb-1 * {width: 420px; height: 666px} // popup window size CAUSING ISSUES WITH GENERATOR
         
         #root .rounded-md[type="button"]  {background-color: @accent-color !important}// "have i been good" button
         
