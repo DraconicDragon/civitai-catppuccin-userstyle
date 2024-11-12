@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="5.54 3.694 12.92 16.612" width="11.0743px" height="13.8433px">
-  <path d="M 12.923 3.694 L 12.923 10.154 L 18.46 10.154 L 5.54 13.846 L 12.923 3.694" style="fill: rgb(77, 171, 247); paint-order: fill; filter: none; stroke: rgb(77, 171, 247); stroke-linejoin: round; stroke-linecap: round;" id="object-0" transform="matrix(1, 0, 0, 1, 0, 2.220446049250313e-16)"/>
-  <path d="M 18.46 10.154 L 11.077 20.306 L 11.077 13.846 L 5.54 13.846 L 18.46 10.154 Z" style="fill: rgb(245, 159, 0); stroke-miterlimit: 1; fill-rule: nonzero; paint-order: stroke; stroke: rgb(245, 159, 0); stroke-linejoin: round;" id="object-1" transform="matrix(1, 0, 0, 1, 0, 2.220446049250313e-16)"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+  <path d="M 12.923 3.694 L 12.923 10.154 L 18.46 10.154 L 5.54 13.846 L 12.923 3.694" style="fill: rgb(77, 171, 247); paint-order: fill; filter: none; stroke: rgb(77, 171, 247); stroke-linejoin: round; stroke-linecap: round;"/>
+  
+<path d="M 18.46 10.154 L 11.077 20.306 L 11.077 13.846 L 5.54 13.846 L 18.46 10.154 Z" style="fill: rgb(245, 159, 0); stroke-miterlimit: 1; fill-rule: nonzero; paint-order: stroke; stroke: rgb(245, 159, 0); stroke-linejoin: round;"/>
 </svg>
