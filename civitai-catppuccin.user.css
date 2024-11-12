@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.21
+@version      0.5.22
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -359,7 +359,7 @@
         //#chat-container {background-color: @mantle !important; color:@text} // chat window
         ////////#root div[class="items-center"] {background-color:green !important;}
         
-        .mb-1 * {width: 420px; height: 466px} // popup window size
+        .mb-1 * {width: 420px; height: 666px} // popup window size
         
         #root .rounded-md[type="button"]  {background-color: @accent-color !important}// "have i been good" button
         
