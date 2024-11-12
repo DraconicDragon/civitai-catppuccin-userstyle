@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-<path d="M 13 3 L 13 10 L 19 10 L 5 14 L 13 3" style="fill: rgb(77, 171, 247); paint-order: fill; filter: none; stroke: rgb(77, 171, 247); stroke-linejoin: round; stroke-linecap: round;"/>
-  <path d="M 19 10 L 11 21 L 11 14 L 5 14 Z" style="fill: rgb(245, 159, 0); stroke-miterlimit: 1; fill-rule: nonzero; paint-order: stroke; stroke: rgb(245, 159, 0); stroke-linejoin: round; stroke-linecap: round;"/>
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="5 3 14 18" width="11.6667px" height="15px">
+  <path d="M 13 3 L 13 10 L 19 10 L 5 14 L 13 3" style="fill: rgb(77, 171, 247); paint-order: fill; filter: none; stroke: rgb(77, 171, 247); stroke-linejoin: round; stroke-linecap: round; stroke-width: 2px;"/>
+  <path d="M 19 10 L 11 21 L 11 14 L 5 14 Z" style="fill: rgb(245, 159, 0); stroke-miterlimit: 1; fill-rule: nonzero; paint-order: stroke; stroke: rgb(245, 159, 0); stroke-linejoin: round; stroke-linecap: round; stroke-width: 2px;"/>
+</svg>
 
 </svg>
