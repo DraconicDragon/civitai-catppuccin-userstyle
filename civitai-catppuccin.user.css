@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.19
+@version      0.5.20
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -133,13 +133,14 @@
         }
         
         /*model page download/create/like, version selection, + add version*/
+        [type="button"][href^="/api/download/"] {background-color: @accent-color;} // download button when no create
         .mantine-mp35ka {background-color: @accent-color;}
-        .mantine-l8vif {background-color: @t_accent-color; color:@b_accent-color;}
+        .mantine-l8vif {background-color: @t_accent-color !important; color:@b_accent-color;} //Download button
         .mantine-6k0h61, .mantine-z4z0r6 {background-color: @surface0}
         .mantine-1ke99cu {background-color: @accent-color !important; color: #fff !important;}
         .mantine-n93y9k * {border:transparent; }
         .mantine-1g72woz {background-color: @t_accent-color !important; color: @b_accent-color;}
-        [type="button"][href^="/api/download/"] {background-color: @accent-color;}
+        
         
         /*buttons with border: Add API key, Redeem Code, add comment/post/review, suggested res., */
         .mantine-1evx5be, .mantine-wpxh0o, .mantine-3rhhm4, .mantine-s0od4i {border-color: @accent-color;}
