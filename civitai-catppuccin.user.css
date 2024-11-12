@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.17
+@version      0.5.18
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -341,14 +341,17 @@
         
         
         //civbot
-        //#chat-container  {background-color: @crust !important; color:@text}
-        #chat-container .items-start .flex-1 .rounded-lg  {background-color: @surface0 !important; color:@text !important}
+        #chat-container .items-start .flex-1 .rounded-lg:not([type="button"])  {background-color: @surface0 !important; color:@text !important}
         #chat-container .transition-colors  {background-color: @accent-color !important; color:#fff !important}
         .disclaimer-container button {background-color: @accent-color !important}
         
-        //civbot size
-        .mb-1 * {width: 420px; height: 666px}
+        // background coloring
+        //#chat-container {background-color: @mantle !important; color:@text} // chat window
+        ////////#root div[class="items-center"] {background-color:green !important;}
         
+        .mb-1 * {width: 420px; height: 466px} // popup window size
+        
+        #root .rounded-md[type="button"]  {background-color: @accent-color !important}// "have i been good" button
         
         //firefox scrollbar
         scrollbar-color: @surface2 fade(@surface0,40);
@@ -357,6 +360,17 @@
         .mantine-z4z0r6 {visibility: collapse;}
         .mantine-1dutd10:nth-child(2) {margin-right:-10px;} // vault icon
         .mantine-1dutd10 [class=""]:has([aria-haspopup="dialog"]), .mantine-132yea6 {display:none !important;}
+        
+        
+        //custom buzz icon hardcoded because its 4am and icba
+        .mantine-1ul1owb .mantine-lw13s0 .tabler-icon-bolt {
+          background-image: url('https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/refs/heads/main/tabler-icon-bolt-custom.svg') !important; 
+          background-size: contain;
+          background-repeat: no-repeat;
+          display: inline-block;}
+        .mantine-1ul1owb .mantine-lw13s0 .tabler-icon-bolt path {stroke: rgba(0,0,0,0); fill: rgba(0,0,0,0);}
+
+
         
         
     }
