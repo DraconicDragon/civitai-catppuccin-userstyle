@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.18
+@version      0.5.19
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -139,6 +139,7 @@
         .mantine-1ke99cu {background-color: @accent-color !important; color: #fff !important;}
         .mantine-n93y9k * {border:transparent; }
         .mantine-1g72woz {background-color: @t_accent-color !important; color: @b_accent-color;}
+        [type="button"][href^="/api/download/"] {background-color: @accent-color;}
         
         /*buttons with border: Add API key, Redeem Code, add comment/post/review, suggested res., */
         .mantine-1evx5be, .mantine-wpxh0o, .mantine-3rhhm4, .mantine-s0od4i {border-color: @accent-color;}
