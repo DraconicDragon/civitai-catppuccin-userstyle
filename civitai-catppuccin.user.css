@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.16
+@version      0.5.17
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -345,6 +345,9 @@
         #chat-container .items-start .flex-1 .rounded-lg  {background-color: @surface0 !important; color:@text !important}
         #chat-container .transition-colors  {background-color: @accent-color !important; color:#fff !important}
         .disclaimer-container button {background-color: @accent-color !important}
+        
+        //civbot size
+        .mb-1 * {width: 420px; height: 666px}
         
         
         //firefox scrollbar
