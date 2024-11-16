@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.24
+@version      0.5.25
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -323,7 +323,8 @@
         // header sticky thing
         .sticky {background-color: @base; color:@text}
         .sticky .mantine-Group-root {color:@text}
-        .sticky .mantine-Group-root .items-center .mantine-Button-root {background-color: transparent}
+        .sticky .mantine-Group-root .items-center .mantine-Button-root:not([href="/shop"]) {background-color: transparent;}
+        .sticky .mantine-Group-root .items-center .mantine-Button-root {color: @text;}
         .sticky .mantine-Group-root .items-center .mantine-Button-root:hover {background-color: fade(@surface0,70)}
         .sticky .mantine-Group-root .items-center .bg-gray-4 {background-color: fade(@surface1,60)}
         /*.sticky .mantine-SegmentedControl-root .mantine-SegmentedControl-control:not(.mantine-SegmentedControl-controlActive) label a .mantine-Text-root {color:@subtext0;}
