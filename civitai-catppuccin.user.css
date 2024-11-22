@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.26
+@version      0.5.28
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -132,8 +132,8 @@
         
         
         
-        /*all general buttons, excluding idk, idk, model create like etc, delete post, delete account, logout, profile card btns, image carousel, gallery, top bar "more" btn, comment cards, comment threads*/
-        .mantine-Button-root:not(.mantine-vs5cem *, .mantine-1omorxi *, .mantine-1dvev8p *, .mantine-1h21rfn, .mantine-1k6yyir, .mantine-27jxzw, .mantine-1gg8vod *, .mantine-1ejqi9m *, [id="gallery"] *, [id^="mantine-"][id$="-target"], div[role="gridcell"] .mantine-Card-root *, [id^="mantine-r"][id$="-body"] * ) {
+        /*all general buttons, excluding sticky header/footer, idk, idk, model create like etc, delete post, delete account, logout, profile card btns, image carousel, gallery, top bar "more" btn, comment cards, comment threads*/
+        .mantine-Button-root:not(.sticky *, .mantine-vs5cem *, .mantine-1omorxi *, .mantine-1dvev8p *, .mantine-1h21rfn, .mantine-1k6yyir, .mantine-27jxzw, .mantine-1gg8vod *, .mantine-1ejqi9m *, [id="gallery"] *, [id^="mantine-"][id$="-target"], div[role="gridcell"] .mantine-Card-root *, [id^="mantine-r"][id$="-body"] * ) {
             background-color: @t_accent-color;
             color:@b_accent-color;
         }
@@ -150,6 +150,7 @@
         
         /*buttons with border: Add API key, Redeem Code, add comment/post/review, suggested res., */
         .mantine-1evx5be, .mantine-wpxh0o, .mantine-3rhhm4, .mantine-s0od4i {border-color: @accent-color;}
+        
         //gallery add post, add review 
         [id="gallery"] .mantine-Group-root .mantine-Group-root .mantine-Button-root:not([data-expanded], [aria-expanded])  {color:@b_accent-color; 
             .tabler-icon-star {stroke: @b_accent-color; fill: @b_accent-color};
@@ -323,11 +324,6 @@
         
         // header sticky thing
         .sticky {background-color: @base; color:@text}
-        .sticky .mantine-Group-root {color:@text}
-        .sticky .mantine-Group-root .items-center .mantine-Button-root:not([href="/shop"]) {background-color: transparent;}
-        .sticky .mantine-Group-root .items-center .mantine-Button-root {color: @text;}
-        .sticky .mantine-Group-root .items-center .mantine-Button-root:hover {background-color: fade(@surface0,70)}
-        .sticky .mantine-Group-root .items-center .bg-gray-4 {background-color: fade(@surface1,60)}
         /*.sticky .mantine-SegmentedControl-root .mantine-SegmentedControl-control:not(.mantine-SegmentedControl-controlActive) label a .mantine-Text-root {color:@subtext0;}
         .sticky .mantine-SegmentedControl-root .mantine-SegmentedControl-control:not(.mantine-SegmentedControl-controlActive):hover label a .mantine-Text-root {color:@subtext1;}
         .sticky .mantine-SegmentedControl-root .mantine-SegmentedControl-controlActive label a .mantine-Text-root {color:@text;}
@@ -358,6 +354,8 @@
         .mantine-p7lxco:hover {background-color: @accent-color} // resize bar
         [id="__next"] .dark .z-10 .size-full .bg-gray-0 .scroll-area [id^="mantine-r"] .mantine-Badge-root {background-color: @t_accent-color; color: @b_accent-color;}
         [id="__next"] .dark .z-10 .size-full .bg-gray-0 .shadow-topper .mantine-Badge-root {color: #4dabf7 !important;}
+        [id="__next"] .overflow-visible  .__mantine-ref-control .mantine-SegmentedControl-labelActive {background-color: @accent-color} // theres some blue trailing thing idk how to get rid of
+        
 
         
         
