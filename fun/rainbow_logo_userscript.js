@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rainbow Animation for the CivitAI logo
 // @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-// @version      1.3
+// @version      1.4
 // @description  Animate the CivitAI logo accent an "AI" text with a rainbow gradient and customizable speed
 // @author       Drac, ChatGPT
 // @match        https://civitai.*/*
@@ -14,7 +14,7 @@
     'use strict';
 
     // Default speed in seconds (if no value is saved yet)
-    const defaultSpeed = 10;
+    const defaultSpeed = 4;
 
     // Get saved speed value or use default
     let animationSpeed = GM_getValue('animationSpeed', defaultSpeed);
@@ -50,7 +50,7 @@
     // Function to modify SVG and add a rainbow gradient
     function modifySvg(svg) {
         if (svg.hasAttribute('data-rainbow-processed')) return; // Skip already processed SVGs
-        const paths = svg.querySelectorAll('.mantine-1hwruzx');
+        const paths = svg.querySelectorAll('.__mantine-ref-ai, .__mantine-ref-accent');
         if (paths.length > 0) {
             // Check if gradient already exists
             let gradient = svg.querySelector('linearGradient#rainbowGradient');
@@ -87,10 +87,10 @@
     const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
             mutation.addedNodes.forEach(node => {
-                if (node.nodeType === 1 && node.matches('svg.mantine-1wvzbo7')) {
+                if (node.nodeType === 1 && node.matches('svg.__mantine-ref-svg')) {
                     modifySvg(node);
                 } else if (node.nodeType === 1) {
-                    const svgs = node.querySelectorAll('svg.mantine-1wvzbo7');
+                    const svgs = node.querySelectorAll('svg.__mantine-ref-svg');
                     svgs.forEach(svg => modifySvg(svg));
                 }
             });
@@ -104,7 +104,7 @@
     });
 
     // Initial processing for already-loaded SVGs
-    document.querySelectorAll('svg.mantine-1wvzbo7').forEach(svg => modifySvg(svg));
+    document.querySelectorAll('svg.__mantine-ref-svg').forEach(svg => modifySvg(svg));
 
     // Inject the initial CSS with the current animation speed
     injectRainbowAnimation(animationSpeed);
