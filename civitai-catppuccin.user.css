@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.29
+@version      0.5.30
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -129,7 +129,11 @@
             background-color: @mantle;
         }
         
-        
+        /* Apply a global transition for all color changes */
+        * {
+          transition: color 0.3s ease, background-color 0.175s ease;
+        }
+
         
         
         /*all general buttons, excluding sticky header/footer, idk, idk, model create like etc, delete post, delete account, logout, profile card btns, image carousel, gallery, top bar "more" btn, comment cards, comment threads*/
@@ -353,8 +357,8 @@
         [id="__next"] .z-10 .size-full .bg-gray-0 .mantine-SegmentedControl-active {background-color:@surface0; }
         .mantine-p7lxco:hover {background-color: @accent-color} // resize bar
         [id="__next"] .z-10 .size-full .bg-gray-0 .scroll-area [id^="mantine-r"] .mantine-Badge-root {background-color: @t_accent-color; color: @b_accent-color;}
-        [id="__next"] .z-10 .size-full .bg-gray-0 .shadow-topper .mantine-Badge-root {color: #4dabf7 !important;}
-        [id="__next"] .overflow-visible  .__mantine-ref-control .mantine-SegmentedControl-labelActive {background-color: @accent-color} // theres some blue trailing thing idk how to get rid of
+        [id="__next"] .z-10 .size-full .bg-gray-0 .shadow-topper .mantine-Badge-root {color: #4dabf7 !important;} // make blue buzz blue 
+        [id="__next"] .overflow-visible  .__mantine-ref-control .mantine-SegmentedControl-labelActive {background-color: @accent-color} // image/video tab changer
         
 
         
