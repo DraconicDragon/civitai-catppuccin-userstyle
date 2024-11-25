@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.30
+@version      0.5.31
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -128,13 +128,8 @@
             color: @text;
             background-color: @mantle;
         }
-        
-        /* Apply a global transition for all color changes */
-        * {
-          transition: color 0.3s ease, background-color 0.175s ease;
-        }
+               
 
-        
         
         /*all general buttons, excluding sticky header/footer, idk, idk, model create like etc, delete post, delete account, logout, profile card btns, image carousel, gallery, top bar "more" btn, comment cards, comment threads*/
         .mantine-Button-root:not(.sticky *, .mantine-vs5cem *, .mantine-1omorxi *, .mantine-1dvev8p *, .mantine-1h21rfn, .mantine-1k6yyir, .mantine-27jxzw, .mantine-1gg8vod *, .mantine-1ejqi9m *, [id="gallery"] *, [id^="mantine-"][id$="-target"], div[role="gridcell"] .mantine-Card-root *, [id^="mantine-r"][id$="-body"] * ) {
@@ -192,8 +187,8 @@
         /*reaction btn active*/
         .mantine-1rk94m8 {background-color: @t_accent-color; color: @b_text;}
         
-        /*EDIT HIDE PROMPT +TOOLS btns*/
-        .text-sm {color: @b_accent-color;}
+        /*EDIT HIDE PROMPT + TOOLS btns*/
+        .text-sm:not([id$="-dropdown"] *) {color: @b_accent-color;}
         
         /*button groups, publish etc, over on schedule doesnt work idk how fix*/
         .mantine-ButtonGroup-root > :nth-child(1) {background-color: @accent-color;}
