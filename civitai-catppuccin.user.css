@@ -187,7 +187,7 @@
         /*reaction btn active*/
         .mantine-1rk94m8 {background-color: @t_accent-color; color: @b_text;}
         
-        /*EDIT HIDE PROMPT + TOOLS btns*/
+        /*EDIT HIDE PROMPT + TOOLS btns; ignore user menu text, probably more but cba rn*/
         .text-sm:not([id$="-dropdown"] *) {color: @b_accent-color;}
         
         /*button groups, publish etc, over on schedule doesnt work idk how fix*/
