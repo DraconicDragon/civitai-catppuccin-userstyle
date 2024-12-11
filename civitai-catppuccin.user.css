@@ -2,7 +2,7 @@
 @name         CivitAI Catppuccin
 @namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.32
+@version      0.5.33
 @updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description  Soothing pastel theme for CivitAI
@@ -200,7 +200,8 @@
             color: @b_accent-color;
         }
         //.mantine-1hwruzx {fill: @accent-color;}
-        .__mantine-ref-ivit, .__mantine-ref-c {fill:@text}
+        path[class^="Logo_c"], path[class^="Logo_ivit"] {fill:@text}
+        path[class^="Logo_ai"], path[class^="Logo_accent"] {fill:@accent-color}
         
         /*customize profile btn */
         .mantine-1278ijn {background-color: @accent-color !important; color:white !important}
@@ -350,7 +351,7 @@
         [id="__next"] .z-10 .size-full .bg-gray-0 .gap-2 .mantine-SegmentedControl-root {background-color:@crust;} // top tab selection
         [id="__next"] .z-10 .size-full .bg-gray-0 .scroll-area [id^="mantine-r"]:not(.mantine-Alert-root, .mantine-Alert-root *) {background-color:@base; }
         [id="__next"] .z-10 .size-full .bg-gray-0 .mantine-SegmentedControl-active {background-color:@surface0; }
-        .mantine-p7lxco:hover {background-color: @accent-color} // resize bar
+        .mantine-p7lxco:hover {background-color: @accent-color;} // resize bar
         [id="__next"] .z-10 .size-full .bg-gray-0 .scroll-area [id^="mantine-r"] .mantine-Badge-root {background-color: @t_accent-color; color: @b_accent-color;}
         [id="__next"] .z-10 .size-full .bg-gray-0 .shadow-topper .mantine-Badge-root {color: #4dabf7 !important; background-color: @mantle;} // make blue buzz blue 
         [id="__next"] .overflow-visible  .__mantine-ref-control .mantine-SegmentedControl-labelActive {background-color: @accent-color;} // image/video tab changer
