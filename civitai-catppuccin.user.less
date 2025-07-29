@@ -2,7 +2,7 @@
 @name           Civitai Catppuccin
 @namespace      https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version        0.9.2
+@version        0.9.3
 @updateURL      https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL     https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description    Soothing pastel theme for CivitAI
@@ -28,6 +28,10 @@
     }
 
       
+/// TODO: add different darkening/lighten stuff to each color, right now is all the same
+/// also the hover stuff probably not needed, is not supposed to lighten anyway (should darken, probably)
+
+
 
 /* mixin */
 #catppuccin-vars(@lookup, @accent, @accent_lookup) {
@@ -121,13 +125,13 @@
 
         
         /* non actual color or stuff that doesnt have huge list of variations*/
-        --mantine-color-anchor: @accent-color;
+        --mantine-color-anchor: @accent-color; /* hyperlinks */
         --mantine-color-black: @crust; 
         --mantine-color-body: @mantle;
         --mantine-color-bright: @text;
         --mantine-color-error: @red;
         --mantine-color-paper: @mantle;
-        --mantine-color-placeholder: @subtext0;
+        --mantine-color-placeholder: @surface2; /* search bar placeholder */
         --mantine-color-text: @subtext1; /* also most of actual text on site, darker/softer  */
         --mantine-color-white: lighten(@text, 20%); /* LM, DM, most of actual text on site, BUT also much stuff on LM..., more white for text DM*/
 
