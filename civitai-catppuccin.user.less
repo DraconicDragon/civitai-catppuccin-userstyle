@@ -2,7 +2,7 @@
 @name           Civitai Catppuccin
 @namespace      https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version        0.9.1
+@version        0.9.2
 @updateURL      https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL     https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description    Soothing pastel theme for CivitAI
@@ -17,7 +17,6 @@
 @var select colorFlavor "Color Flavor" ["latte:Latte*", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha"]
 @var number darkenAmount "Darken Accent Colors (%)" 0, -40, 40, 1
 ==/UserStyle== */
-
 @-moz-document regexp("https://civitai\.(com|green|black|red)/.*|https://app\.gpt-trainer\.com/.*") {
 
     /* Catppuccin color palettes data structure */
@@ -75,13 +74,13 @@
         /* non color, brightness */
         --mantine-color-dark-0: @subtext1; /* CIVIT logo top left */
         --mantine-color-dark-1: @subtext0; /* billing page "Annual Plans" */
-        --mantine-color-dark-2: mediumpurple; /* idk */
+        --mantine-color-dark-2: #f00; /* idk */
         --mantine-color-dark-3: @surface2; /* 'X' in filter textbox in notification drawer */
         --mantine-color-dark-4: @surface0; /* border, top search bar */
         --mantine-color-dark-5: @surface0; /* billing page "Monthly-annual Plans" active item switch thing */
         --mantine-color-dark-6: @base; /* search bar background */
         --mantine-color-dark-7: @crust; /* search bar category dropdown hover + some other text */
-        --mantine-color-dark-8: @base; /* billing page background of tiers */
+        --mantine-color-dark-8: @crust; /* billing page background of current tier + buzz dashboard time switch bg */
         --mantine-color-dark-9: @crust;
         
         --mantine-color-dark-filled: @surface1;
