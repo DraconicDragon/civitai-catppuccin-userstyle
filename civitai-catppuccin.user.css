@@ -2,7 +2,7 @@
 @name           Civitai Catppuccin
 @namespace      https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version        0.9.0
+@version        0.9.1
 @updateURL      https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL     https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description    Soothing pastel theme for CivitAI
@@ -459,9 +459,9 @@
     /* Use this section for any elements that need manual tweaks */
     
     // Forcing the main user profile name to use the accent color - nvm affects model card titles too
-    .mantine-Text-root[data-size="xl"] { 
+    /*.mantine-Text-root[data-size="xl"] { 
         color: var(--mantine-color-blue-filled) !important;
-    }
+    }*/
 
 
     // Icons
