@@ -1,547 +1,481 @@
 /* ==UserStyle==
-@name         CivitAI Catppuccin
-@namespace    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@homepageURL  https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version      0.5.35
-@updateURL    https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
-@supportURL   https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@description  Soothing pastel theme for CivitAI
-@author       Drac
-@license      MIT
+@name           Civitai Catppuccin
+@namespace      https://github.com/DraconicDragon/civitai-catppuccin-userstyle
+@homepageURL    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
+@version        0.9.0
+@updateURL      https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
+@supportURL     https://github.com/DraconicDragon/civitai-catppuccin-userstyle
+@description    Soothing pastel theme for CivitAI
+@author         Drac
+@license        Apache 2.0
 
-@preprocessor less
+@preprocessor   less
+
 @var select lightFlavor "Light Flavor" ["latte:Latte*", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha"]
 @var select darkFlavor "Dark Flavor" ["latte:Latte", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha*"]
 @var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
-
+@var select colorFlavor "Color Flavor" ["latte:Latte*", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha"]
+@var number darkenAmount "Darken Accent Colors (%)" 0, -40, 40, 1
 ==/UserStyle== */
+
 @-moz-document regexp("https://civitai\.(com|green|black|red)/.*|https://app\.gpt-trainer\.com/.*") {
-    :root {
 
-        #catppuccin(@darkFlavor, @accentColor, @accentColor);
-       
-         
+    /* Catppuccin color palettes data structure */
+    @catppuccin: {
+        @latte: { @rosewater: #dc8a78; @flamingo: #dd7878; @pink: #ea76cb; @mauve: #8839ef; @red: #d20f39; @maroon: #e64553; @peach: #fe640b; @yellow: #df8e1d; @green: #40a02b; @teal: #179299; @sky: #04a5e5; @sapphire: #209fb5; @blue: #1e66f5; @lavender: #7287fd; @text: #4c4f69; @subtext1: #5c5f77; @subtext0: #6c6f85; @overlay2: #7c7f93; @overlay1: #8c8fa1; @overlay0: #9ca0b0; @surface2: #acb0be; @surface1: #bcc0cc; @surface0: #ccd0da; @base: #eff1f5; @mantle: #e6e9ef; @crust: #dce0e8; };
+        @frappe: { @rosewater: #f2d5cf; @flamingo: #eebebe; @pink: #f4b8e4; @mauve: #ca9ee6; @red: #e78284; @maroon: #ea999c; @peach: #ef9f76; @yellow: #e5c890; @green: #a6d189; @teal: #81c8be; @sky: #99d1db; @sapphire: #85c1dc; @blue: #8caaee; @lavender: #babbf1; @text: #c6d0f5; @subtext1: #b5bfe2; @subtext0: #a5adce; @overlay2: #949cbb; @overlay1: #838ba7; @overlay0: #737994; @surface2: #626880; @surface1: #51576d; @surface0: #414559; @base: #303446; @mantle: #292c3c; @crust: #232634; };
+        @macchiato: { @rosewater: #f4dbd6; @flamingo: #f0c6c6; @pink: #f5bde6; @mauve: #c6a0f6; @red: #ed8796; @maroon: #ee99a0; @peach: #f5a97f; @yellow: #eed49f; @green: #a6da95; @teal: #8bd5ca; @sky: #91d7e3; @sapphire: #7dc4e4; @blue: #8aadf4; @lavender: #b7bdf8; @text: #cad3f5; @subtext1: #b8c0e0; @subtext0: #a5adcb; @overlay2: #939ab7; @overlay1: #8087a2; @overlay0: #6e738d; @surface2: #5b6078; @surface1: #494d64; @surface0: #363a4f; @base: #24273a; @mantle: #1e2030; @crust: #181926; };
+        @mocha: { @rosewater: #f5e0dc; @flamingo: #f2cdcd; @pink: #f5c2e7; @mauve: #cba6f7; @red: #f38ba8; @maroon: #eba0ac; @peach: #fab387; @yellow: #f9e2af; @green: #a6e3a1; @teal: #94e2d5; @sky: #89dceb; @sapphire: #74c7ec; @blue: #89b4fa; @lavender: #b4befe; @text: #cdd6f4; @subtext1: #bac2de; @subtext0: #a6adc8; @overlay2: #9399b2; @overlay1: #7f849c; @overlay0: #6c7086; @surface2: #585b70; @surface1: #45475a; @surface0: #313244; @base: #1e1e2e; @mantle: #181825; @crust: #11111b; };
     }
-//TODO: add hover and maybe pressed highlight, info stuff missing + image view probably and some less used views, see if can change brush svg to white and color it from parent
-//TODO: training site maybe missing, comments cancel + comment button no color
-//NOTE: technically chat is also not finished but i dont use it so i dont care and it looks good enough if you dont hover lol
-//@var select removeVaultIcon "Vault Icon Removal" ["removeIcon:Remove", "stay:Stay"]
+
+      
+
+/* mixin */
+#catppuccin-vars(@lookup, @accent, @accent_lookup) {
+    /* --- Structural & Neutral Colors (from base theme) --- */
+    /* These are NOT affected by the darkening amount */
+    @base:          @catppuccin[@@lookup][@base];
+    @mantle:        @catppuccin[@@lookup][@mantle];
+    @crust:         @catppuccin[@@lookup][@crust];
+    @text:          @catppuccin[@@lookup][@text];
+    @subtext1:      @catppuccin[@@lookup][@subtext1];
+    @subtext0:      @catppuccin[@@lookup][@subtext0];
+    @overlay2:      @catppuccin[@@lookup][@overlay2];
+    @overlay1:      @catppuccin[@@lookup][@overlay1];
+    @overlay0:      @catppuccin[@@lookup][@overlay0];
+    @surface2:      @catppuccin[@@lookup][@surface2];
+    @surface1:      @catppuccin[@@lookup][@surface1];
+    @surface0:      @catppuccin[@@lookup][@surface0];
+
+    /* --- Accent & Semantic Colors (from accent theme) --- */
+    /* These ARE affected by the user's darkening amount */
+    @accent-color:  darken(@catppuccin[@@accent_lookup][@@accent], unit(@darkenAmount, %));
+    @rosewater:     darken(@catppuccin[@@accent_lookup][@rosewater], unit(@darkenAmount, %));
+    @flamingo:      darken(@catppuccin[@@accent_lookup][@flamingo], unit(@darkenAmount, %));
+    @pink:          darken(@catppuccin[@@accent_lookup][@pink], unit(@darkenAmount, %));
+    @mauve:         darken(@catppuccin[@@accent_lookup][@mauve], unit(@darkenAmount, %));
+    @red:           darken(@catppuccin[@@accent_lookup][@red], unit(@darkenAmount, %));
+    @maroon:        darken(@catppuccin[@@accent_lookup][@maroon], unit(@darkenAmount, %));
+    @peach:         darken(@catppuccin[@@accent_lookup][@peach], unit(@darkenAmount, %));
+    @yellow:        darken(@catppuccin[@@accent_lookup][@yellow], unit(@darkenAmount, %));
+    @green:         darken(@catppuccin[@@accent_lookup][@green], unit(@darkenAmount, %));
+    @teal:          darken(@catppuccin[@@accent_lookup][@teal], unit(@darkenAmount, %));
+    @sky:           darken(@catppuccin[@@accent_lookup][@sky], unit(@darkenAmount, %));
+    @sapphire:      darken(@catppuccin[@@accent_lookup][@sapphire], unit(@darkenAmount, %));
+    @blue:          darken(@catppuccin[@@accent_lookup][@blue], unit(@darkenAmount, %));
+    @lavender:      darken(@catppuccin[@@accent_lookup][@lavender], unit(@darkenAmount, %));
+
+        /* --- Accent Color Definitions (from potentially different flavor) --- */
+        /*@accent-color: darken(@catppuccin[@@accent_lookup][@@accent], 16%);*/
+        @t_accent-color: fade(@accent-color, 16%);
+        @t_accent-hover: fade(@accent-color, 8%);
+        @b_accent-color: darken(@accent-color, 5%);
+        
+        
+        /* non color, brightness */
+        --mantine-color-dark-0: @subtext1; /* CIVIT logo top left */
+        --mantine-color-dark-1: @subtext0; /* billing page "Annual Plans" */
+        --mantine-color-dark-2: mediumpurple; /* idk */
+        --mantine-color-dark-3: @surface2; /* 'X' in filter textbox in notification drawer */
+        --mantine-color-dark-4: @surface0; /* border, top search bar */
+        --mantine-color-dark-5: @surface0; /* billing page "Monthly-annual Plans" active item switch thing */
+        --mantine-color-dark-6: @base; /* search bar background */
+        --mantine-color-dark-7: @crust; /* search bar category dropdown hover + some other text */
+        --mantine-color-dark-8: @base; /* billing page background of tiers */
+        --mantine-color-dark-9: @crust;
+        
+        --mantine-color-dark-filled: @surface1;
+        --mantine-color-dark-filled-hover: @surface2;
+        --mantine-color-dark-light: fade(@overlay0, 15%);
+        --mantine-color-dark-light-color: @subtext0;
+        --mantine-color-dark-light-hover: fade(@overlay0, 20%);
+        --mantine-color-dark-outline: @overlay1;
+        --mantine-color-dark-outline-hover: fade(@overlay1, 25%);
+        
+        --mantine-color-dark-text: @subtext0;
+        --mantine-color-default: @base;
+        --mantine-color-default-border: @surface0;
+        --mantine-color-default-color: @text;
+        /* --mantine-color-default-hover: @surface1; /* not sure if needed hover of bottom buttons in user menu */
+        --mantine-color-dimmed: @subtext0; /* billing page, the /mo thing and some other text */
+
+        
+        --mantine-color-gray-0: @text; /* billing page, few text */
+        --mantine-color-gray-1: @mantle;
+        --mantine-color-gray-2: @surface0;
+        --mantine-color-gray-3: @surface0; /* models dropdown + search icon */
+        --mantine-color-gray-4: @surface0; /* border, top search bar */
+        --mantine-color-gray-5: @overlay0;
+        --mantine-color-gray-6: @subtext1;
+        --mantine-color-gray-7: @surface1; /* search icon hover */
+        --mantine-color-gray-8: @surface0; /* DM, models dropdown + search icon */
+        --mantine-color-gray-9: yellow; /* bad, maybe */
+        
+        --mantine-color-gray-filled: @surface1;
+        --mantine-color-gray-filled-hover: @surface2;
+        --mantine-color-gray-light: fade(@overlay0, 15%);
+        --mantine-color-gray-light-color: @subtext0;
+        --mantine-color-gray-light-hover: fade(@overlay0, 20%);
+        --mantine-color-gray-outline: @overlay1;
+        --mantine-color-gray-outline-hover: fade(@overlay1, 25%);
+        --mantine-color-gray-text: @subtext0;
+
+        
+        /* non actual color or stuff that doesnt have huge list of variations*/
+        --mantine-color-anchor: @accent-color;
+        --mantine-color-black: @crust; 
+        --mantine-color-body: @mantle;
+        --mantine-color-bright: @text;
+        --mantine-color-error: @red;
+        --mantine-color-paper: @mantle;
+        --mantine-color-placeholder: @subtext0;
+        --mantine-color-text: @subtext1; /* also most of actual text on site, darker/softer  */
+        --mantine-color-white: lighten(@text, 20%); /* LM, DM, most of actual text on site, BUT also much stuff on LM..., more white for text DM*/
+
+        --mantine-color-scheme: dark; /* this is a keyword, not a color */
+
+        --mantine-primary-color-0: @accent-color; /* REVIEW: --mantine-primary-color-0 */;
+        --mantine-primary-color-1: @accent-color; /* REVIEW: --mantine-primary-color-1 */;
+        --mantine-primary-color-2: @accent-color; /* REVIEW: --mantine-primary-color-2 */;
+        --mantine-primary-color-3: @accent-color; /* REVIEW: --mantine-primary-color-3 */;
+        --mantine-primary-color-4: @accent-color; /* REVIEW: --mantine-primary-color-4 */;
+        --mantine-primary-color-5: @accent-color; /* REVIEW: --mantine-primary-color-5 */;
+        --mantine-primary-color-6: @accent-color; /* REVIEW: --mantine-primary-color-6 */;
+        --mantine-primary-color-7: @accent-color; /* REVIEW: --mantine-primary-color-7 */;
+        --mantine-primary-color-8: @accent-color; /* REVIEW: --mantine-primary-color-8 */;
+        --mantine-primary-color-9: @accent-color; /* REVIEW: --mantine-primary-color-9 */;
+        --mantine-primary-color-contrast: @base;
+        --mantine-primary-color-filled: @accent-color;
+        --mantine-primary-color-filled-hover: @b_accent-color;
+        --mantine-primary-color-light: @t_accent-color;
+        --mantine-primary-color-light-color: @accent-color;
+        --mantine-primary-color-light-hover: @t_accent-hover;
+
+        
+        
+        /* --- MANTINE VARIABLE OVERRIDE MAP --- */
+        --mantine-color-accent-0: @accent-color; /* REVIEW: --mantine-color-accent-0 */;
+        --mantine-color-accent-1: @accent-color; /* REVIEW: --mantine-color-accent-1 */;
+        --mantine-color-accent-2: @accent-color; /* REVIEW: --mantine-color-accent-2 */;
+        --mantine-color-accent-3: @accent-color; /* REVIEW: --mantine-color-accent-3 */;
+        --mantine-color-accent-4: @accent-color; /* REVIEW: --mantine-color-accent-4 */;
+        --mantine-color-accent-5: @accent-color; /* REVIEW: --mantine-color-accent-5 */;
+        --mantine-color-accent-6: @accent-color; /* REVIEW: --mantine-color-accent-6 */;
+        --mantine-color-accent-7: @accent-color; /* REVIEW: --mantine-color-accent-7 */;
+        --mantine-color-accent-8: @accent-color; /* REVIEW: --mantine-color-accent-8 */;
+        --mantine-color-accent-9: @accent-color; /* REVIEW: --mantine-color-accent-9 */;
+        --mantine-color-accent-filled: @accent-color;
+        --mantine-color-accent-filled-hover: @b_accent-color;
+        --mantine-color-accent-light: @t_accent-color;
+        --mantine-color-accent-light-color: @accent-color;
+        --mantine-color-accent-light-hover: @t_accent-hover;
+        --mantine-color-accent-outline: @accent-color;
+        --mantine-color-accent-outline-hover: @accent-color;
+        --mantine-color-accent-text: @accent-color;
+        
+        --mantine-color-blue-0: @accent-color; /* REVIEW: --mantine-color-blue-0 */;
+        --mantine-color-blue-1: @accent-color; /* REVIEW: --mantine-color-blue-1 */;
+        --mantine-color-blue-2: @accent-color; /* REVIEW: --mantine-color-blue-2 */;
+        --mantine-color-blue-3: @accent-color; /* REVIEW: --mantine-color-blue-3 */;
+        --mantine-color-blue-4: @accent-color; /* REVIEW: --mantine-color-blue-4 */;
+        --mantine-color-blue-5: @accent-color; /* REVIEW: --mantine-color-blue-5 */;
+        --mantine-color-blue-6: @accent-color; /* REVIEW: --mantine-color-blue-6 */;
+        --mantine-color-blue-7: @accent-color; /* REVIEW: --mantine-color-blue-7 */;
+        --mantine-color-blue-8: @accent-color; /* REVIEW: --mantine-color-blue-8 */;
+        --mantine-color-blue-9: @accent-color; /* REVIEW: --mantine-color-blue-9 */;
+        --mantine-color-blue-filled: @accent-color;
+        --mantine-color-blue-filled-hover: @b_accent-color;
+        --mantine-color-blue-light: @t_accent-color;
+        --mantine-color-blue-light-color: @accent-color;
+        --mantine-color-blue-light-hover: @t_accent-hover;
+        --mantine-color-blue-outline: @accent-color;
+        --mantine-color-blue-outline-hover: @t_accent-hover; /* outline button hover */
+        --mantine-color-blue-text: @accent-color;
+
+        --mantine-color-cyan-0: @sky;
+        --mantine-color-cyan-1: @sky;
+        --mantine-color-cyan-2: @sky;
+        --mantine-color-cyan-3: @sky;
+        --mantine-color-cyan-4: @sky;
+        --mantine-color-cyan-5: @sky;
+        --mantine-color-cyan-6: @sky;
+        --mantine-color-cyan-7: @sky;
+        --mantine-color-cyan-8: @sky;
+        --mantine-color-cyan-9: @sky;
+        --mantine-color-cyan-filled: @sky;
+        --mantine-color-cyan-filled-hover: lighten(@sky, 8%);
+        --mantine-color-cyan-light: fade(@sky, 15%);
+        --mantine-color-cyan-light-color: @sky;
+        --mantine-color-cyan-light-hover: fade(@sky, 25%);
+        --mantine-color-cyan-outline: @sky;
+        --mantine-color-cyan-outline-hover: fade(@sky, 25%);
+        --mantine-color-cyan-text: @sky;
+
+        --mantine-color-gold-0: @yellow;
+        --mantine-color-gold-1: @yellow;
+        --mantine-color-gold-2: @yellow;
+        --mantine-color-gold-3: @yellow;
+        --mantine-color-gold-4: @yellow;
+        --mantine-color-gold-5: @yellow;
+        --mantine-color-gold-6: @yellow;
+        --mantine-color-gold-7: @yellow;
+        --mantine-color-gold-8: @yellow;
+        --mantine-color-gold-9: @yellow;
+        --mantine-color-gold-filled: @yellow;
+        --mantine-color-gold-filled-hover: lighten(@yellow, 8%);
+        --mantine-color-gold-light: fade(@yellow, 15%);
+        --mantine-color-gold-light-color: @yellow;
+        --mantine-color-gold-light-hover: fade(@yellow, 25%);
+        --mantine-color-gold-outline: @yellow;
+        --mantine-color-gold-outline-hover: fade(@yellow, 25%);
+        --mantine-color-gold-text: @yellow;
+
+        --mantine-color-grape-0: @mauve;
+        --mantine-color-grape-1: @mauve;
+        --mantine-color-grape-2: @mauve;
+        --mantine-color-grape-3: @mauve;
+        --mantine-color-grape-4: @mauve;
+        --mantine-color-grape-5: @mauve;
+        --mantine-color-grape-6: @mauve;
+        --mantine-color-grape-7: @mauve;
+        --mantine-color-grape-8: @mauve;
+        --mantine-color-grape-9: @mauve;
+        --mantine-color-grape-filled: @mauve;
+        --mantine-color-grape-filled-hover: lighten(@mauve, 8%);
+        --mantine-color-grape-light: fade(@mauve, 15%);
+        --mantine-color-grape-light-color: @mauve;
+        --mantine-color-grape-light-hover: fade(@mauve, 25%);
+        --mantine-color-grape-outline: @mauve;
+        --mantine-color-grape-outline-hover: fade(@mauve, 25%);
+        --mantine-color-grape-text: @mauve;
+
+        --mantine-color-green-0: @green;
+        --mantine-color-green-1: @green;
+        --mantine-color-green-2: @green;
+        --mantine-color-green-3: @green;
+        --mantine-color-green-4: @green;
+        --mantine-color-green-5: @green;
+        --mantine-color-green-6: @green;
+        --mantine-color-green-7: @green;
+        --mantine-color-green-8: @green;
+        --mantine-color-green-9: @green;
+        --mantine-color-green-filled: @green;
+        --mantine-color-green-filled-hover: darken(@green, 8%); /* darken instead */
+        --mantine-color-green-light: fade(@green, 15%);
+        --mantine-color-green-light-color: @green;
+        --mantine-color-green-light-hover: fade(@green, 25%);
+        --mantine-color-green-outline: @green;
+        --mantine-color-green-outline-hover: fade(@green, 25%);
+        --mantine-color-green-text: @green;
+
+        --mantine-color-indigo-0: @blue;
+        --mantine-color-indigo-1: @blue;
+        --mantine-color-indigo-2: @blue;
+        --mantine-color-indigo-3: @blue;
+        --mantine-color-indigo-4: @blue;
+        --mantine-color-indigo-5: @blue;
+        --mantine-color-indigo-6: @blue;
+        --mantine-color-indigo-7: @blue;
+        --mantine-color-indigo-8: @blue;
+        --mantine-color-indigo-9: @blue;
+        --mantine-color-indigo-filled: @blue;
+        --mantine-color-indigo-filled-hover: lighten(@blue, 8%);
+        --mantine-color-indigo-light: fade(@blue, 15%);
+        --mantine-color-indigo-light-color: @blue;
+        --mantine-color-indigo-light-hover: fade(@blue, 25%);
+        --mantine-color-indigo-outline: @blue;
+        --mantine-color-indigo-outline-hover: fade(@blue, 25%);
+        --mantine-color-indigo-text: @blue;
+
+        --mantine-color-lime-0: @green;
+        --mantine-color-lime-1: @green;
+        --mantine-color-lime-2: @green;
+        --mantine-color-lime-3: @green;
+        --mantine-color-lime-4: @green;
+        --mantine-color-lime-5: @green;
+        --mantine-color-lime-6: @green;
+        --mantine-color-lime-7: @green;
+        --mantine-color-lime-8: @green;
+        --mantine-color-lime-9: @green;
+        --mantine-color-lime-filled: @green;
+        --mantine-color-lime-filled-hover: lighten(@green, 8%);
+        --mantine-color-lime-light: fade(@green, 15%);
+        --mantine-color-lime-light-color: @green;
+        --mantine-color-lime-light-hover: fade(@green, 25%);
+        --mantine-color-lime-outline: @green;
+        --mantine-color-lime-outline-hover: fade(@green, 25%);
+        --mantine-color-lime-text: @green;
+
+        --mantine-color-orange-0: @peach;
+        --mantine-color-orange-1: @peach;
+        --mantine-color-orange-2: @peach;
+        --mantine-color-orange-3: @peach;
+        --mantine-color-orange-4: @peach;
+        --mantine-color-orange-5: @peach;
+        --mantine-color-orange-6: @peach;
+        --mantine-color-orange-7: @peach;
+        --mantine-color-orange-8: @peach;
+        --mantine-color-orange-9: @peach;
+        --mantine-color-orange-filled: @peach;
+        --mantine-color-orange-filled-hover: lighten(@peach, 8%);
+        --mantine-color-orange-light: fade(@peach, 15%);
+        --mantine-color-orange-light-color: @peach;
+        --mantine-color-orange-light-hover: fade(@peach, 25%);
+        --mantine-color-orange-outline: @peach;
+        --mantine-color-orange-outline-hover: fade(@peach, 25%);
+        --mantine-color-orange-text: @peach;
+
+        --mantine-color-pink-0: @pink;
+        --mantine-color-pink-1: @pink;
+        --mantine-color-pink-2: @pink;
+        --mantine-color-pink-3: @pink;
+        --mantine-color-pink-4: @pink;
+        --mantine-color-pink-5: @pink;
+        --mantine-color-pink-6: @pink;
+        --mantine-color-pink-7: @pink;
+        --mantine-color-pink-8: @pink;
+        --mantine-color-pink-9: @pink;
+        --mantine-color-pink-filled: @pink;
+        --mantine-color-pink-filled-hover: lighten(@pink, 8%);
+        --mantine-color-pink-light: fade(@pink, 15%);
+        --mantine-color-pink-light-color: @pink;
+        --mantine-color-pink-light-hover: fade(@pink, 25%);
+        --mantine-color-pink-outline: @pink;
+        --mantine-color-pink-outline-hover: fade(@pink, 25%);
+        --mantine-color-pink-text: @pink;
+
+        --mantine-color-red-0: @red;
+        --mantine-color-red-1: @red;
+        --mantine-color-red-2: @red;
+        --mantine-color-red-3: @red;
+        --mantine-color-red-4: @red;
+        --mantine-color-red-5: @red;
+        --mantine-color-red-6: @red;
+        --mantine-color-red-7: @red;
+        --mantine-color-red-8: @red;
+        --mantine-color-red-9: @red;
+        /*--mantine-color-red-filled: @red;
+        --mantine-color-red-filled-hover: lighten(@red, 8%);
+        --mantine-color-red-light: fade(@red, 15%);
+        --mantine-color-red-light-color: @red;
+        --mantine-color-red-light-hover: fade(@red, 25%);
+        --mantine-color-red-outline: @red;
+        --mantine-color-red-outline-hover: fade(@red, 25%);
+        --mantine-color-red-text: @red; too much, is handled automatically ig */
+
+        --mantine-color-success-0: @green;
+        --mantine-color-success-1: @green;
+        --mantine-color-success-2: @green;
+        --mantine-color-success-3: @green;
+        --mantine-color-success-4: @green;
+        --mantine-color-success-5: @green;
+        --mantine-color-success-6: @green;
+        --mantine-color-success-7: @green;
+        --mantine-color-success-8: @green;
+        --mantine-color-success-9: @green;
+        --mantine-color-success-filled: @green;
+        --mantine-color-success-filled-hover: lighten(@green, 8%);
+        --mantine-color-success-light: fade(@green, 15%);
+        --mantine-color-success-light-color: @green;
+        --mantine-color-success-light-hover: fade(@green, 25%);
+        --mantine-color-success-outline: @green;
+        --mantine-color-success-outline-hover: fade(@green, 25%);
+        --mantine-color-success-text: @green;
+
+        --mantine-color-teal-0: @teal;
+        --mantine-color-teal-1: @teal;
+        --mantine-color-teal-2: @teal;
+        --mantine-color-teal-3: @teal;
+        --mantine-color-teal-4: @teal;
+        --mantine-color-teal-5: @teal;
+        --mantine-color-teal-6: @teal;
+        --mantine-color-teal-7: @teal;
+        --mantine-color-teal-8: @teal;
+        --mantine-color-teal-9: @teal;
+        --mantine-color-teal-filled: @teal;
+        --mantine-color-teal-filled-hover: lighten(@teal, 8%);
+        --mantine-color-teal-light: fade(@teal, 15%);
+        --mantine-color-teal-light-color: @teal;
+        --mantine-color-teal-light-hover: fade(@teal, 25%);
+        --mantine-color-teal-outline: @teal;
+        --mantine-color-teal-outline-hover: fade(@teal, 25%);
+        --mantine-color-teal-text: @teal;
+
+        --mantine-color-violet-0: @lavender;
+        --mantine-color-violet-1: @lavender;
+        --mantine-color-violet-2: @lavender;
+        --mantine-color-violet-3: @lavender;
+        --mantine-color-violet-4: @lavender;
+        --mantine-color-violet-5: @lavender;
+        --mantine-color-violet-6: @lavender;
+        --mantine-color-violet-7: @lavender;
+        --mantine-color-violet-8: @lavender;
+        --mantine-color-violet-9: @lavender;
+        --mantine-color-violet-filled: @lavender;
+        --mantine-color-violet-filled-hover: lighten(@lavender, 8%);
+        --mantine-color-violet-light: fade(@lavender, 15%);
+        --mantine-color-violet-light-color: @lavender;
+        --mantine-color-violet-light-hover: fade(@lavender, 25%);
+        --mantine-color-violet-outline: @lavender;
+        --mantine-color-violet-outline-hover: fade(@lavender, 25%);
+        --mantine-color-violet-text: @lavender;
+
+        --mantine-color-yellow-0: @yellow;
+        --mantine-color-yellow-1: @yellow;
+        --mantine-color-yellow-2: @yellow;
+        --mantine-color-yellow-3: @yellow;
+        --mantine-color-yellow-4: @yellow;
+        --mantine-color-yellow-5: @yellow;
+        --mantine-color-yellow-6: @yellow;
+        --mantine-color-yellow-7: @yellow;
+        --mantine-color-yellow-8: @yellow;
+        --mantine-color-yellow-9: @yellow;
+        --mantine-color-yellow-filled: @yellow;
+        --mantine-color-yellow-filled-hover: lighten(@yellow, 8%);
+        --mantine-color-yellow-light: fade(@yellow, 15%);
+        --mantine-color-yellow-light-color: @yellow;
+        --mantine-color-yellow-light-hover: fade(@yellow, 25%);
+        --mantine-color-yellow-outline: @yellow;
+        --mantine-color-yellow-outline-hover: fade(@yellow, 25%);
+        --mantine-color-yellow-text: @yellow;
+    }
     
-    #catppuccin(@lookup, @accent, @t_accent) {
-        @rosewater: @catppuccin[@@lookup][@rosewater];
-        @flamingo: @catppuccin[@@lookup][@flamingo];
-        @pink: @catppuccin[@@lookup][@pink];
-        @mauve: @catppuccin[@@lookup][@mauve];
-        @red: @catppuccin[@@lookup][@red];
-        @maroon: @catppuccin[@@lookup][@maroon];
-        @peach: @catppuccin[@@lookup][@peach];
-        @yellow: @catppuccin[@@lookup][@yellow];
-        @green: @catppuccin[@@lookup][@green];
-        @teal: @catppuccin[@@lookup][@teal];
-        @sky: @catppuccin[@@lookup][@sky];
-        @sapphire: @catppuccin[@@lookup][@sapphire];
-        @blue: @catppuccin[@@lookup][@blue];
-        @lavender: @catppuccin[@@lookup][@lavender];
-        @text: @catppuccin[@@lookup][@text];
-        @subtext1: @catppuccin[@@lookup][@subtext1];
-        @subtext0: @catppuccin[@@lookup][@subtext0];
-        @overlay2: @catppuccin[@@lookup][@overlay2];
-        @overlay1: @catppuccin[@@lookup][@overlay1];
-        @overlay0: @catppuccin[@@lookup][@overlay0];
-        @surface2: @catppuccin[@@lookup][@surface2];
-        @surface1: @catppuccin[@@lookup][@surface1];
-        @surface0: @catppuccin[@@lookup][@surface0];
-        @base: @catppuccin[@@lookup][@base];
-        @mantle: @catppuccin[@@lookup][@mantle];
-        @crust: @catppuccin[@@lookup][@crust];
-        @accent-color: @catppuccin[@@lookup][@@accent];
-        /*transparent colors*/
-        @t_rosewater: fade(@catppuccin[@@lookup][@rosewater], 20);
-        @t_flamingo: fade(@catppuccin[@@lookup][@flamingo], 20);
-        @t_pink: fade(@catppuccin[@@lookup][@pink], 20);
-        @t_mauve: fade(@catppuccin[@@lookup][@mauve], 20);
-        @t_red: fade(@catppuccin[@@lookup][@red], 20);
-        @t_maroon: fade(@catppuccin[@@lookup][@maroon], 20);
-        @t_peach: fade(@catppuccin[@@lookup][@peach], 20);
-        @t_yellow: fade(@catppuccin[@@lookup][@yellow], 20);
-        @t_green: fade(@catppuccin[@@lookup][@green], 20);
-        @t_teal: fade(@catppuccin[@@lookup][@teal], 20);
-        @t_sky: fade(@catppuccin[@@lookup][@sky], 20);
-        @t_sapphire: fade(@catppuccin[@@lookup][@sapphire], 20);
-        @t_blue: fade(@catppuccin[@@lookup][@blue], 20);
-        @t_lavender: fade(@catppuccin[@@lookup][@lavender], 20);
-        @t_text: fade(@catppuccin[@@lookup][@text], 20);
-        @t_subtext1: fade(@catppuccin[@@lookup][@subtext1], 20);
-        @t_subtext0: fade(@catppuccin[@@lookup][@subtext0], 20);
-        @t_overlay2: fade(@catppuccin[@@lookup][@overlay2], 20);
-        @t_overlay1: fade(@catppuccin[@@lookup][@overlay1], 20);
-        @t_overlay0: fade(@catppuccin[@@lookup][@overlay0], 20);
-        @t_surface2: fade(@catppuccin[@@lookup][@surface2], 20);
-        @t_surface1: fade(@catppuccin[@@lookup][@surface1], 20);
-        @t_surface0: fade(@catppuccin[@@lookup][@surface0], 20);
-        @t_base: fade(@catppuccin[@@lookup][@base], 20);
-        @t_mantle: fade(@catppuccin[@@lookup][@mantle], 20);
-        @t_crust: fade(@catppuccin[@@lookup][@crust], 20);
-        @t_accent-color: fade(@catppuccin[@@lookup][@@accent], 20);
-        /*brighter*/
-        @b_rosewater: lighten(@catppuccin[@@lookup][@rosewater], 20%);
-        @b_flamingo: lighten(@catppuccin[@@lookup][@flamingo], 20%);
-        @b_pink: lighten(@catppuccin[@@lookup][@pink], 20%);
-        @b_mauve: lighten(@catppuccin[@@lookup][@mauve], 20%);
-        @b_red: lighten(@catppuccin[@@lookup][@red], 20%);
-        @b_maroon: lighten(@catppuccin[@@lookup][@maroon], 20%);
-        @b_peach: lighten(@catppuccin[@@lookup][@peach], 20%);
-        @b_yellow: lighten(@catppuccin[@@lookup][@yellow], 20%);
-        @b_green: lighten(@catppuccin[@@lookup][@green], 20%);
-        @b_teal: lighten(@catppuccin[@@lookup][@teal], 20%);
-        @b_sky: lighten(@catppuccin[@@lookup][@sky], 20%);
-        @b_sapphire: lighten(@catppuccin[@@lookup][@sapphire], 20%);
-        @b_blue: lighten(@catppuccin[@@lookup][@blue], 20%);
-        @b_lavender: lighten(@catppuccin[@@lookup][@lavender], 20%);
-        @b_text: lighten(@catppuccin[@@lookup][@text], 20%);
-        @b_subtext1: lighten(@catppuccin[@@lookup][@subtext1], 20%);
-        @b_subtext0: lighten(@catppuccin[@@lookup][@subtext0], 20%);
-        @b_overlay2: lighten(@catppuccin[@@lookup][@overlay2], 20%);
-        @b_overlay1: lighten(@catppuccin[@@lookup][@overlay1], 20%);
-        @b_overlay0: lighten(@catppuccin[@@lookup][@overlay0], 20%);
-        @b_surface2: lighten(@catppuccin[@@lookup][@surface2], 20%);
-        @b_surface1: lighten(@catppuccin[@@lookup][@surface1], 20%);
-        @b_surface0: lighten(@catppuccin[@@lookup][@surface0], 20%);
-        @b_base: lighten(@catppuccin[@@lookup][@base], 20%);
-        @b_mantle: lighten(@catppuccin[@@lookup][@mantle], 20%);
-        @b_crust: lighten(@catppuccin[@@lookup][@crust], 20%);
-        @b_accent-color: lighten(@catppuccin[@@lookup][@@accent], 20%);
-
-                --mantine-color-blue-4: #ffffff !important;
-        --mantine-color-blue-7: #ff6347 !important;
-        
-        color-scheme: if(@lookup =mocha, dark, light);
-
-        ::selection {
-            background-color: fade(@accent-color, 30%);
-        }
-        
-        color: @text;
-
-        body {
-            
-            color: @text;
-            background-color: @mantle;
-        }
-               
-
-        
-        /*all general buttons, excluding sticky header/footer, idk, idk, model create like etc, delete post, delete account, logout, profile card btns, image carousel, gallery, top bar "more" btn, comment cards, comment threads*/
-        .mantine-Button-root:not(.sticky *, .mantine-vs5cem *, .mantine-1omorxi *, .mantine-1dvev8p *, .mantine-1h21rfn, .mantine-1k6yyir, .mantine-27jxzw, .mantine-1gg8vod *, .mantine-1ejqi9m *, [id="gallery"] *, [id^="mantine-"][id$="-target"], div[role="gridcell"] .mantine-Card-root *, [id^="mantine-r"][id$="-body"] * ) {
-            background-color: @t_accent-color;
-            color:@b_accent-color;
-        }
-        
-        
-        
-        /*model page download/create/like, version selection, + add version*/
-        [type="button"][href^="/api/download/"] {background-color: @accent-color;} // download button when no create
-        .mantine-mp35ka {background-color: @accent-color;}
-        .mantine-l8vif {background-color: @t_accent-color !important; color:@b_accent-color;} //Download button
-        .mantine-6k0h61, .mantine-z4z0r6 {background-color: @surface0}
-        .mantine-1ke99cu {background-color: @accent-color !important; color: #fff !important;}
-        .mantine-n93y9k * {border:transparent; }
-        .mantine-1g72woz {background-color: @t_accent-color !important; color: @b_accent-color;}
-        
-        
-        /*buttons with border: Add API key, Redeem Code, add comment/post/review, suggested res., */
-        .mantine-1evx5be, .mantine-wpxh0o, .mantine-3rhhm4, .mantine-s0od4i {border-color: @accent-color;}
-        
-        //gallery add post, add review 
-        [id="gallery"] .mantine-Group-root .mantine-Group-root .mantine-Button-root:not([data-expanded], [aria-expanded])  {color:@b_accent-color; 
-            .tabler-icon-star {stroke: @b_accent-color; fill: @b_accent-color};
-        } // use this scss style for similar things
-        //sort + filter maybe global
-        //.mantine-Button-root[data-expanded], .mantine-Button-root[aria-expanded]:not(header *) {background-color: green;
-        //    .sticky {background-color: transparent;}
-        //}
-        
-        /*download button in file dropdown on model page*/
-        [id^="mantine-"][id$="panel-version-files"] .mantine-Group-root .mantine-Button-root {background-color: transparent !important;
-            &:hover {background-color: @t_accent-color !important;}
-        } 
-        
-        /*profile cards buttons*/
-        .mantine-j5xtyu {background-color: @accent-color;}
-        
-        /*comment cards*/
-        div[role="gridcell"] .mantine-Card-root .mantine-Button-root:not([id^="mantine-"][id$="-target"]) {color:@b_accent-color; 
-            &:hover {color:@b_accent-color; background-color:@t_accent-color;}
-        }
-        
-        // comment threads, added my own border lol
-        .mantine-Paper-root:has([id^="mantine-"][id$="-body"]) {background-color:@mantle !important; border:1px solid; border-color:@surface0}
-        [id^="mantine-"][id$="-body"] .mantine-RichTextEditor-content, [id^="mantine-r"][id$="-body"] .mantine-RichTextEditor-root {background-color: @crust; border-color:@surface0}
-        [id^="mantine-"][id$="-dropdown"] {background-color:@mantle !important;}
-        
-        /*tabler icon + tabler star icon, bell, brush, alert-circle*/
-        .tabler-icon-star {fill:@accent-color;}
-        .tabler-icon-bell-filled {fill:@b_accent-color;}
-        .tabler-icon-brush {stroke:@b_accent-color;}
-        .tabler-icon-alert-circle, .mantine-1p58evf {background-color: @accent-color;}
-        //.tabler-icon-refresh {background-color: @accent-color; stroke:@b_accent-color; fill:@b_accent-color;}
-        
-        /*reaction btn active*/
-        .mantine-1rk94m8 {background-color: @t_accent-color; color: @b_text;}
-        
-        /*EDIT HIDE PROMPT + TOOLS btns; ignore user menu text, probably more but cba rn*/
-        .text-sm:not([id$="-dropdown"] *) {color: @b_accent-color;}
-        
-        /*button groups, publish etc, over on schedule doesnt work idk how fix*/
-        .mantine-ButtonGroup-root > :nth-child(1) {background-color: @accent-color;}
-        .mantine-ButtonGroup-root > :nth-child(2) {background-color: @t_accent-color; color:@b_accent-color; border-color: @b_accent-color}
-        
-        /*navbar create + logo*/
-        [data-activity="create:navbar"], .mantine-h74xig{
-            background-color: @t_accent-color;
-            color: @b_accent-color;
-        }
-        //.mantine-1hwruzx {fill: @accent-color;}
-        path[class^="Logo_c"], path[class^="Logo_ivit"] {fill:@text}
-        path[class^="Logo_ai"], path[class^="Logo_accent"] {fill:@accent-color}
-        
-        /*customize profile btn */
-        .mantine-1278ijn {background-color: @accent-color !important; color:white !important}
-        /*show more button*/
-        .mantine-Spoiler-control {color: @accent-color;}
-        
-        /*alerts + profile view all x btns*/
-        .mantine-Alert-root, .mantine-1o2r815 {background-color: @t_accent-color; color: @b_accent-color;}
-        
-        /*notifications, icon*/
-        .mantine-Indicator-indicator {background-color: @accent-color;}
-        .mantine-Tabs-tabsList .mantine-Badge-root {background-color: @accent-color !important; color: #fff !important;}
-        
-        /*badges, exluding images/cards/carousel, shop buzz price, shop new, model page table stats, training, trigger words, hash, counters top + tags badges, */
-        .mantine-Badge-root:not(div[class^="AspectRatioImageCard_footer"] .mantine-Badge-root, div[class^="AspectRatioImageCard_header"] .mantine-Badge-root, .mantine-Card-root *, .mantine-1ejqi9m *, .cursor-pointer, .mantine-s4xvym, .mantine-4gptay, .mantine-rygrzn, .mantine-1u5ck20 *, .mantine-k4unwa *, .mantine-mwqi5l *) {
-            background-color: @t_accent-color; color:@b_accent-color;
-        } // some not needed anymore i think
-        
-        /*model page tags main category tag, recommended resources*/
-        .mantine-eqo531 {background-color: @t_accent-color; color: @b_accent-color;}
-        [id^="mantine-"][id$="-panel-recommended-resources"] .mantine-Badge-root {background-color: @t_accent-color !important; color: @b_accent-color}
-        
-        /*civbot + up button, who the hell decided its a good idea to make them basically completely different*/
-        footer .mantine-v5o495, footer [id^="headlessui-popover-button-\:"] {
-            background-color: @accent-color !important; color: white !important; border-radius: 4px; border-color: transparent;
-        }
-        
-        /*hyperlinks, excluding profile view segmented control/categories bar, buzz dash buzz b board, manage files, about V. show more*/
-        .mantine-1qns6v4, .mantine-fgipfw, [id^="mantine-"][id$="-control-version-files"] .mantine-Anchor-root *,[id^="mantine-"][id$="-panel-version-description"]:nth-child(2) .mantine-Text-root {color:@accent-color !important}
-        
-        /*remix btn*/
-        .__mantine-ref-white * {background-color: @surface0; color: @b_accent-color;}
-
-        //NOTE: try to keep this style if possible so css doesnt break on class updates
-        /*i icon generation metadata*/
-        [id^="headlessui-popover-panel-\:"] .mantine-Text-root:not(.text-lg, .cursor-pointer) {color:@subtext0;}
-        [id^="headlessui-popover-panel-\:"] .font-semibold {color:@text !important;}
-        [id^="headlessui-popover-panel-\:"] .mantine-Badge-root {background-color:@t_accent-color; color: @b_accent-color !important;}
-        [id^="headlessui-popover-panel-\:"] .leading-snug  {color: @b_accent-color !important;}
-        .cursor-pointer {color:@accent-color !important;}
-        
-        // image carousel buttons controls + gallery bottom bar indicator
-        .mantine-Carousel-controls .mantine-Carousel-control {background-color: @surface0; border-color:@surface1; color:@text}
-        [id="gallery"] .mantine-Carousel-indicators .mantine-Carousel-indicator  {background-color: @subtext0 !important;}
-
-        /*switch button + checkbox*/
-        .mantine-Switch-track {background-color: @base;}
-        input:checked ~ .mantine-Switch-track  {background-color:@accent-color !important; border: @accent-color;}
-        input:checked + * > .mantine-Switch-thumb {background-color:#ffffff !important;}
-        .mantine-Checkbox-input:checked {background-color:@accent-color !important; border: @accent-color;}
-        
-        // sliders
-        .mantine-Slider-track {background-color: green !important;}
-        .mantine-Slider-bar, .mantine-Slider-thumb {background-color:@accent-color; border-color:white !important;}
-        .mantine-Slider-thumb {border-width: 4px; height:16px; width: 16px}
-        
-        // add model modal in generator
-        .mantine-Modal-modal [id^="mantine-"][id$="-body"] .mantine-Button-root:not(.mantine-ScrollArea-root *) {background-color: @accent-color;}
-        .mantine-Modal-modal [id^="mantine-"][id$="-body"] .mantine-TextInput-wrapper * {background-color:@base; border-width: 0px; border-radius:4px; color:@text;}
-        .mantine-Modal-modal [id^="mantine-"][id$="-body"] .mantine-TextInput-wrapper {background-color:@base; border-width: 1px; border-radius:4px; border-color:@surface0;}
-        
-        
-        
-        
-        
-        
-        
-        // scaffold styling
-        
-        // model page details table
-        .mantine-Table-root tr td { background-color: @mantle; border-color: @surface0 !important}
-        .mantine-Table-root tr td:first-child { background-color: @mantle; }
-        .mantine-Table-root tr td:last-child { background-color: @crust; }
-        
-        
-        //gallery
-        [id="gallery"] > * {background-color: @base}
-        [id="gallery"] .mantine-Card-root .mantine-Paper-root {background-color: @mantle !important}
-        
-        //divider
-        .mantine-Divider-root {border-color:@surface0;} 
-        
-        //paper root
-        .mantine-Paper-root:not(.frame-decoration *) {background-color:@base;}
-        
-        //chat
-        .mantine-Paper-root .mantine-Grid-root .mantine-Grid-col .mantine-Stack-root .mantine-SegmentedControl-root {background-color: @crust;}
-        .mantine-Paper-root .mantine-Grid-root .mantine-Grid-col .mantine-Stack-root .mantine-SegmentedControl-controlActive {background-color: @surface0;}
-        .mantine-Paper-root .mantine-Grid-root .mantine-Grid-col .mantine-Stack-root .mantine-Group-root:hover {background-color: @t_accent-color;} //issues, too much affected
-        .mantine-Paper-root .mantine-Grid-root .mantine-Grid-col .mantine-Stack-root .mantine-TextInput-input {background-color: @base;border-color:@surface0}
-        .mantine-Paper-root .mantine-Grid-root .mantine-Grid-col .mantine-Stack-root .mantine-Autocomplete-input {background-color: @base;border-color:@surface0}
-        // idk how to do textbox blue border when selected 
-        
-        // Profile page
-        .min-h-full, .mantine-SegmentedControl-root {background-color: @base;} // side, top category bar 
-        
-        // homepage Modal (paper root?), modal paper root, modal accord items
-        .mantine-Modal-modal, .mantine-Modal-modal .mantine-Paper-root, .mantine-Accordion-item .mantine-Paper-root {background-color: @mantle; border-color:@surface0}
-        
-        //crust
-        .mantine-Accordion-item {background-color: @crust; border-color:@surface0}
-        
-        // header, footer
-        header {background-color: @crust}
-        footer .items-center {background-color: @crust; color:@text}
-        
-        // search
-        header .mantine-Select-input {background-color: @base; color: @text; border-color:@base}
-        header .mantine-Autocomplete-input {background-color: @mantle; color: @text; border-color:@base}
-        header .mantine-ActionIcon-root:not(.inline-block) {background-color:@base; color: @text; border-color:@base}
-        // models dropdown + item highlight
-        [id^="mantine-"][id$="-items"] {background-color: @mantle}
-        [id^="mantine-"][id$="-items"] .mantine-Select-item[aria-selected="true"] {background-color: @surface0}
-        [id^="mantine-"][id$="-items"] .mantine-Select-item[data-selected="true"] {background-color: @accent-color}
-        
-        // account menu
-        .mantine-Menu-dropdown[role="menu"] {background-color: @base;color:@text;border-color:@surface0}
-        .mantine-Menu-dropdown[role="menu"] .mantine-Menu-item:hover {background-color: @surface0;color:@text}
-        .mantine-Menu-dropdown[role="menu"] .mantine-Stack-root .mantine-Button-root:not(.mantine-1jc9ooz) {background-color: @base; color:@text; border-color:@surface0}
-        
-        // header sticky thing
-        .sticky {background-color: @base; color:@text}
-        /*.sticky .mantine-SegmentedControl-root .mantine-SegmentedControl-control:not(.mantine-SegmentedControl-controlActive) label a .mantine-Text-root {color:@subtext0;}
-        .sticky .mantine-SegmentedControl-root .mantine-SegmentedControl-control:not(.mantine-SegmentedControl-controlActive):hover label a .mantine-Text-root {color:@subtext1;}
-        .sticky .mantine-SegmentedControl-root .mantine-SegmentedControl-controlActive label a .mantine-Text-root {color:@text;}
-        .sticky .mantine-SegmentedControl-root .mantine-SegmentedControl-controlActive {background-color: @surface0;}
-        */
-        // sticky header on homepage specific
-        [id^="mantine-"][id*="-tab-"][data-active="true"], [id^="mantine-"][id$="-target"][data-active="true"] {background-color: @surface0}
-        [id^="mantine-"][id*="-tab-"]:not([data-active="true"]):hover, [id^="mantine-"][id$="-target"][data-active="true"]:hover {background-color: fade(@surface0, 65) !important}
-        
-        //Notifications
-        .mantine-Drawer-drawer [id^="mantine-"][id$="-body"] .mantine-Paper-root .mantine-SimpleGrid-root .mantine-Paper-root {
-            background-color: @mantle
-        }
-        .mantine-Drawer-drawer [id^="mantine-"][id$="-body"] .mantine-Paper-root .mantine-SimpleGrid-root .mantine-Paper-root:hover {
-            background-color: @surface0 !important
-        }
-        .mantine-Drawer-drawer [id^="mantine-"][id$="-body"] .mantine-Paper-root .mantine-SimpleGrid-root .mantine-Paper-root[data-unread="true"] {
-            background-color: @surface1
-        }
-        
-        
-        //generator
-        [id="__next"] .z-10 .size-full .bg-gray-0 {background-color:@mantle; } // main 
-        [id="__next"] .z-10 .size-full .bg-gray-0 *:not(.mantine-UnstyledButton-root, .mantine-Switch-thumb) {border-color:@surface0; } // borders
-        [id="__next"] .z-10 .size-full .bg-gray-0 .gap-2 .mantine-SegmentedControl-root {background-color:@crust;} // top tab selection
-        [id="__next"] .z-10 .size-full .bg-gray-0 .scroll-area [id^="mantine-r"]:not(.mantine-Alert-root, .mantine-Alert-root *) {background-color:@base; }
-        [id="__next"] .z-10 .size-full .bg-gray-0 .mantine-SegmentedControl-active {background-color:@surface0; }
-        div[class^="ResizeableSidebar_resizer_"]:hover {background-color: @accent-color; } // resize bar
-        [id="__next"] .z-10 .size-full .bg-gray-0 .scroll-area [id^="mantine-r"] .mantine-Badge-root {background-color: @t_accent-color; color: @b_accent-color;}
-        [id="__next"] .z-10 .size-full .bg-gray-0 .shadow-topper .mantine-Badge-root {color: #4dabf7 !important; background-color: @mantle;} // make blue buzz blue 
-        [id="__next"] .overflow-visible  .__mantine-ref-control .mantine-SegmentedControl-labelActive {background-color: @accent-color;} // image/video tab changer
-        
-
-        
-        
-        //civbot
-        #chat-container .items-start .flex-1 .rounded-lg:not([type="button"])  {background-color: @surface0 !important; color:@text !important}
-        #chat-container .transition-colors  {background-color: @accent-color !important; color:#fff !important}
-        .disclaimer-container button {background-color: @accent-color !important}
-        
-        // background coloring
-        //#chat-container {background-color: @mantle !important; color:@text} // chat window
-        ////////#root div[class="items-center"] {background-color:green !important;}
-        
-        //.mb-1 * {width: 420px; height: 666px} // popup window size CAUSING ISSUES WITH GENERATOR
-        
-        #root .rounded-md[type="button"]  {background-color: @accent-color !important}// "have i been good" button
-        
-        //firefox scrollbar
-        scrollbar-color: @surface2 fade(@surface0,40);
-        
-        //hardcoded things i want to have removed i guess
-        .mantine-z4z0r6 {visibility: collapse;}
-        .mantine-1dutd10:nth-child(2) {margin-right:-10px;} // vault icon
-        .mantine-1dutd10 [class=""]:has([aria-haspopup="dialog"]), .mantine-132yea6 {display:none !important;}
-        
-        
-        //custom buzz icon hardcoded because its 4am and icba
-        .mantine-1ul1owb .mantine-lw13s0 .tabler-icon-bolt {
-          background-image: url('https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/refs/heads/main/tabler-icon-bolt-custom.svg') !important; 
-          background-size: contain;
-          background-repeat: no-repeat;
-          display: inline-block;}
-        .mantine-1ul1owb .mantine-lw13s0 .tabler-icon-bolt path {stroke: rgba(0,0,0,0); fill: rgba(0,0,0,0);}
-
-
-        
-        
+    /* --- APPLY THEMES --- */
+    
+    /* 1. Apply the selected LIGHT theme by default */
+    :root {
+        #catppuccin-vars(@lightFlavor, @accentColor, @colorFlavor);
+        color-scheme: light;
     }
-}
-@catppuccin: {
-    @latte: {
-        @rosewater: #dc8a78;
-        @flamingo: #dd7878;
-        @pink: #ea76cb;
-        @mauve: #8839ef;
-        @red: #d20f39;
-        @maroon: #e64553;
-        @peach: #fe640b;
-        @yellow: #df8e1d;
-        @green: #40a02b;
-        @teal: #179299;
-        @sky: #04a5e5;
-        @sapphire: #209fb5;
-        @blue: #1e66f5;
-        @lavender: #7287fd;
-        @text: #4c4f69;
-        @subtext1: #5c5f77;
-        @subtext0: #6c6f85;
-        @overlay2: #7c7f93;
-        @overlay1: #8c8fa1;
-        @overlay0: #9ca0b0;
-        @surface2: #acb0be;
-        @surface1: #bcc0cc;
-        @surface0: #ccd0da;
-        @base: #eff1f5;
-        @mantle: #e6e9ef;
-        @crust: #dce0e8;
-    }
-    ;
-    @frappe: {
-        @rosewater: #f2d5cf;
-        @flamingo: #eebebe;
-        @pink: #f4b8e4;
-        @mauve: #ca9ee6;
-        @red: #e78284;
-        @maroon: #ea999c;
-        @peach: #ef9f76;
-        @yellow: #e5c890;
-        @green: #a6d189;
-        @teal: #81c8be;
-        @sky: #99d1db;
-        @sapphire: #85c1dc;
-        @blue: #8caaee;
-        @lavender: #babbf1;
-        @text: #c6d0f5;
-        @subtext1: #b5bfe2;
-        @subtext0: #a5adce;
-        @overlay2: #949cbb;
-        @overlay1: #838ba7;
-        @overlay0: #737994;
-        @surface2: #626880;
-        @surface1: #51576d;
-        @surface0: #414559;
-        @base: #303446;
-        @mantle: #292c3c;
-        @crust: #232634;
-    }
-    ;
-    @macchiato: {
-        @rosewater: #f4dbd6;
-        @flamingo: #f0c6c6;
-        @pink: #f5bde6;
-        @mauve: #c6a0f6;
-        @red: #ed8796;
-        @maroon: #ee99a0;
-        @peach: #f5a97f;
-        @yellow: #eed49f;
-        @green: #a6da95;
-        @teal: #8bd5ca;
-        @sky: #91d7e3;
-        @sapphire: #7dc4e4;
-        @blue: #8aadf4;
-        @lavender: #b7bdf8;
-        @text: #cad3f5;
-        @subtext1: #b8c0e0;
-        @subtext0: #a5adcb;
-        @overlay2: #939ab7;
-        @overlay1: #8087a2;
-        @overlay0: #6e738d;
-        @surface2: #5b6078;
-        @surface1: #494d64;
-        @surface0: #363a4f;
-        @base: #24273a;
-        @mantle: #1e2030;
-        @crust: #181926;
-    }
-    ;
-    @mocha: {
-        /*        @rosewater: #f5e0dc;
-        @flamingo: #f2cdcd;
-        @pink: #f5c2e7;
-        @mauve: #cba6f7;
-        @red: #f38ba8;
-        @maroon: #eba0ac;
-        @peach: #fab387;
-        @yellow: #f9e2af;
-        @green: #a6e3a1;
-        @teal: #94e2d5;
-        @sky: #89dceb;
-        @sapphire: #74c7ec;
-        @blue: #89b4fa;
-        @lavender: #b4befe;*/
-        /* Adjusted colors for bright text */
-        @rosewater: rgb(211, 125, 107);  
-        @flamingo: rgb(215, 110, 110);  
-        @pink: rgb(229, 122, 199);   
-        @mauve: rgb(154, 90, 255); 
-        @red: rgb(231, 76, 60);     
-        @maroon: rgb(229, 115, 115);
-        @peach: rgb(253, 141, 27);  
-        @yellow: rgb(244, 180, 0); 
-        @green: rgb(76, 175, 80);  
-        @teal: rgb(29, 233, 182);   
-        @sky: rgb(48, 176, 229);   
-        @sapphire: rgb(30, 136, 229);
-        @blue: rgb(66, 133, 244); 
-        @lavender: rgb(140, 143, 255);
-        @text: rgb(205, 214, 244);
-        @subtext1: rgb(186, 194, 222);
-        @subtext0: rgb(166, 173, 200);
-        @overlay2: rgb(147, 153, 178);
-        @overlay1: rgb(127, 132, 156);
-        @overlay0: rgb(108, 112, 134);
-        @surface2: rgb(88, 91, 112);
-        @surface1: rgb(69, 71, 90);
-        @surface0: rgb(49, 50, 68);
-        @base: rgb(30, 30, 46);
-        @mantle: rgb(24, 24, 37);
-        @crust: rgb(17, 17, 27);
-        
-        @rosewater-bright: rgb(221, 135, 127);
-        @flamingo-bright: rgb(225, 130, 130);
-        @pink-bright: rgb(239, 132, 219);
-        @mauve-bright: rgb(170, 110, 255);
-        @red-bright: rgb(241, 86, 70);
-        @maroon-bright: rgb(239, 125, 125);
-        @peach-bright: rgb(255, 156, 47);
-        @yellow-bright: rgb(254, 205, 30);
-        @green-bright: rgb(91, 195, 108);
-        @teal-bright: rgb(41, 253, 197);
-        @sky-bright: rgb(70, 186, 239);
-        @sapphire-bright: rgb(40, 146, 239);
-        @blue-bright: rgb(86, 153, 254);
-        @lavender-bright: rgb(150, 153, 255);
 
-        
-    };
+    /* 2. OVERRIDE with the DARK theme if the data attribute is present */
+    html[data-mantine-color-scheme="dark"] {
+        #catppuccin-vars(@darkFlavor, @accentColor, @colorFlavor);
+        color-scheme: dark;
+    }
+// light theme doesnt actually work and uses different vars apparently, but if everything is set correctly latte will work on dark mode
+
+    /* --- SPECIFIC COMPONENT OVERRIDES AKA HARDCODED STUFF, probably --- */
+    /* Use this section for any elements that need manual tweaks */
+    
+    // Forcing the main user profile name to use the accent color - nvm affects model card titles too
+    .mantine-Text-root[data-size="xl"] { 
+        color: var(--mantine-color-blue-filled) !important;
+    }
+
+
+    // Icons
+
+    // accent
+    div[data-portal="true"] .mantine-Menu-dropdown // CREATE dropdown
+    {
+        svg[class="tabler-icon tabler-icon-brush "], svg[class="tabler-icon tabler-icon-photo-up "], svg[class="tabler-icon tabler-icon-video-plus "], svg[class="tabler-icon tabler-icon-upload "], svg[class="tabler-icon tabler-icon-barbell "], svg[class="tabler-icon tabler-icon-writing "], svg[class="tabler-icon tabler-icon-moneybag "] {
+            stroke: var(--mantine-color-accent-0);
+            }
+    }
+
+    // green
+    span[class*=" mantine-Badge-section"] svg[class="tabler-icon tabler-icon-thumb-up-filled "], svg[class="tabler-icon tabler-icon-point-filled "]{
+        fill: var(--mantine-color-green-0) !important;
+    }
 }
