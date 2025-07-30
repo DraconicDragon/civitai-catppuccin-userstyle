@@ -2,7 +2,7 @@
 @name           Civitai Catppuccin
 @namespace      https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @homepageURL    https://github.com/DraconicDragon/civitai-catppuccin-userstyle
-@version        0.9.3
+@version        0.9.4
 @updateURL      https://raw.githubusercontent.com/DraconicDragon/civitai-catppuccin-userstyle/main/civitai-catppuccin.user.css
 @supportURL     https://github.com/DraconicDragon/civitai-catppuccin-userstyle
 @description    Soothing pastel theme for CivitAI
@@ -73,6 +73,8 @@
         @t_accent-color: fade(@accent-color, 16%);
         @t_accent-hover: fade(@accent-color, 8%);
         @b_accent-color: darken(@accent-color, 5%);
+        @l_accent-color: lighten(@accent-color, 15%);
+        @l_accent-hover: fade(@accent-color, 25%);
         
         
         /* non color, brightness */
@@ -112,10 +114,10 @@
         --mantine-color-gray-6: @subtext1;
         --mantine-color-gray-7: @surface1; /* search icon hover */
         --mantine-color-gray-8: @surface0; /* DM, models dropdown + search icon */
-        --mantine-color-gray-9: yellow; /* bad, maybe */
+        --mantine-color-gray-9: @base; /* leaderboard sidebar border inactive + light mode tooltip hover and other stuff */
         
         --mantine-color-gray-filled: @surface1;
-        --mantine-color-gray-filled-hover: @surface2;
+        --mantine-color-gray-filled-hover: @surface0; /* version badge hover, if disabled gray-9 is used */
         --mantine-color-gray-light: fade(@overlay0, 15%);
         --mantine-color-gray-light-color: @subtext0;
         --mantine-color-gray-light-hover: fade(@overlay0, 20%);
@@ -125,7 +127,7 @@
 
         
         /* non actual color or stuff that doesnt have huge list of variations*/
-        --mantine-color-anchor: @accent-color; /* hyperlinks */
+        --mantine-color-anchor: lighten(@accent-color, 8%); /* hyperlinks */
         --mantine-color-black: @crust; 
         --mantine-color-body: @mantle;
         --mantine-color-bright: @text;
@@ -151,8 +153,8 @@
         --mantine-primary-color-filled: @accent-color;
         --mantine-primary-color-filled-hover: @b_accent-color;
         --mantine-primary-color-light: @t_accent-color;
-        --mantine-primary-color-light-color: @accent-color;
-        --mantine-primary-color-light-hover: @t_accent-hover;
+        --mantine-primary-color-light-color: @l_accent-color;
+        --mantine-primary-color-light-hover: @l_accent-hover;
 
         
         
@@ -180,7 +182,7 @@
         --mantine-color-blue-1: @accent-color; /* REVIEW: --mantine-color-blue-1 */;
         --mantine-color-blue-2: @accent-color; /* REVIEW: --mantine-color-blue-2 */;
         --mantine-color-blue-3: @accent-color; /* REVIEW: --mantine-color-blue-3 */;
-        --mantine-color-blue-4: @accent-color; /* REVIEW: --mantine-color-blue-4 */;
+        --mantine-color-blue-4: lighten(@accent-color, 8%); /* anchor/hyperlink in gen info popout "i" icon */
         --mantine-color-blue-5: @accent-color; /* REVIEW: --mantine-color-blue-5 */;
         --mantine-color-blue-6: @accent-color; /* REVIEW: --mantine-color-blue-6 */;
         --mantine-color-blue-7: @accent-color; /* REVIEW: --mantine-color-blue-7 */;
@@ -189,8 +191,8 @@
         --mantine-color-blue-filled: @accent-color;
         --mantine-color-blue-filled-hover: @b_accent-color;
         --mantine-color-blue-light: @t_accent-color;
-        --mantine-color-blue-light-color: @accent-color;
-        --mantine-color-blue-light-hover: @t_accent-hover;
+        --mantine-color-blue-light-color: @l_accent-color;
+        --mantine-color-blue-light-hover: @l_accent-hover;
         --mantine-color-blue-outline: @accent-color;
         --mantine-color-blue-outline-hover: @t_accent-hover; /* outline button hover */
         --mantine-color-blue-text: @accent-color;
